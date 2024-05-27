@@ -1,0 +1,3061 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>crono - reloj</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content=""/>
+  <meta name="keywords" content=""/>
+  <meta name="author" content=""/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link rel="icon" href="img/favicon.png">
+  <link rel="stylesheet" href="bootstrap4/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="alertifyjs/css/alertify.css">
+  <!-- Animate.css 
+  <link rel="stylesheet" href="css/bootstrap.css">-->
+
+  <link rel="stylesheet" href="css/animate.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+
+			.sticky + .content {
+			  padding-top: 60px;
+			}
+			  	.allvh {
+			  		min-height: 100vh;
+			  	}
+			  	
+			  	.caracteristicas{
+						color: black;
+						text-align: center;
+						font-family: "teko";
+						font-size: 1.3rem;
+					}
+
+				  /* For demo purpose only */
+				  /* For Demo Purposes Only ( You can delete this anytime :-) */
+				  #colour-variations {
+				    padding: 10px;
+				    -webkit-transition: 0.5s;
+				      -o-transition: 0.5s;
+				      transition: 0.5s;
+				    width: 140px;
+				    position: fixed;
+				    left: 0;
+				    top: 100px;
+				    z-index: 999999;
+				    background: #fff;
+				    /*border-radius: 4px;*/
+				    border-top-right-radius: 4px;
+				    border-bottom-right-radius: 4px;
+				    -webkit-box-shadow: 0 0 9px 0 rgba(0,0,0,.1);
+				    -moz-box-shadow: 0 0 9px 0 rgba(0,0,0,.1);
+				    -ms-box-shadow: 0 0 9px 0 rgba(0,0,0,.1);
+				    box-shadow: 0 0 9px 0 rgba(0,0,0,.1);
+				  }
+				  #colour-variations.sleep {
+				    margin-left: -140px;
+				  }
+				  #colour-variations h3 {
+				    text-align: center;;
+				    font-size: 11px;
+				    letter-spacing: 2px;
+				    text-transform: uppercase;
+				    color: #777;
+				    margin: 0 0 10px 0;
+				    padding: 0;;
+				  }
+				  #colour-variations ul, #colour-variations ul li {
+				    padding: 0;
+				    margin: 0;
+				  }
+				  #colour-variations li {
+				    list-style: none;
+				    display: block;
+				    margin-bottom: 5px!important;
+				    float: left;
+				    width: 100%;
+				  }
+				  #colour-variations li a {
+				    width: 100%;
+				    position: relative;
+				    display: block;
+				    overflow: hidden;
+				    -webkit-border-radius: 4px;
+				    -moz-border-radius: 4px;
+				    -ms-border-radius: 4px;
+				    border-radius: 4px;
+				    -webkit-transition: 0.4s;
+				    -o-transition: 0.4s;
+				    transition: 0.4s;
+				  }
+
+				  #colour-variations li a:hover {
+				      opacity: .9;
+				  }
+				  #colour-variations li a > span {
+				    width: 33.33%;
+				    height: 20px;
+				    float: left;
+				    display: -moz-inline-stack;
+				    display: inline-block;
+				    zoom: 1;
+				    *display: inline;
+				  }
+
+				  .option-toggle {
+				    position: absolute;
+				    right: 0;
+				    top: 0;
+				    margin-top: 5px;
+				    margin-right: -30px;
+				    width: 30px;
+				    height: 30px;
+				    background: #f64662;
+				    text-align: center;
+				    border-top-right-radius: 4px;
+				    border-bottom-right-radius: 4px;
+				    color: #fff;
+				    cursor: pointer;
+				    -webkit-box-shadow: 0 0 9px 0 rgba(0,0,0,.1);
+				    -moz-box-shadow: 0 0 9px 0 rgba(0,0,0,.1);
+				    -ms-box-shadow: 0 0 9px 0 rgba(0,0,0,.1);
+				    box-shadow: 0 0 9px 0 rgba(0,0,0,.1);
+				  }
+				  .option-toggle i {
+				    top: 2px;
+				    position: relative;
+				  }
+				  .option-toggle:hover, .option-toggle:focus, .option-toggle:active {
+				    color:  #fff;
+				    text-decoration: none;
+				    outline: none;
+				  }
+
+					
+					#audi1-menos, #audi2-menos, #carga-menos, #prot-menos{
+						display: none;
+					}
+					#escoder, #escoder2, #escoder3, #escoder4, #escoder5 {
+					  display: none;
+					}
+					div.bg-black5{
+			      background: rgba(0, 0, 0, 0.5);
+			    }
+			    .cuest-control {
+			      display: block;
+			      width: 100%;
+			      height: calc(1.5rem + 2px);
+			      padding: 0rem 0.75rem;
+			      font-size: 0.75rem;
+			      line-height: 0.75rem;
+			      color: #495057;
+			      background-color: #fff;
+			      background-clip: padding-box;
+			      border: 1px solid #ced4da;
+			      border-radius: 0.25rem;
+			      transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+			    }
+
+			    .cuest-control:focus {
+			      color: #495057;
+			      background-color: #fff;
+			      border-color: #80bdff;
+			      outline: 0;
+			      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+			    }
+			    .cuest-pro {
+			      display: block;
+			      width: 100%;
+			      /*height: calc(1.5rem + 2px);*/
+			      padding: 0;
+			      font-size: 0.75rem;
+			      line-height: 0.75rem;
+			      color: #495057;
+			      border: 0;
+			      transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+			    }
+
+
+					.site-footer {
+					  padding: 4em 0;
+					  background: white;
+					  color: black; }
+					  @media (min-width: 768px) {
+					    .site-footer {
+					      padding: 7em 0; } }
+					  .site-footer p {
+					    color: black }
+					  .site-footer h2, .site-footer h3, .site-footer h4, .site-footer h5 {
+					    color: #fff; }
+					  .site-footer a {
+					    color: black; }
+					    .site-footer a:hover {
+					      color: black; }
+					  .site-footer ul li {
+					    margin-bottom: 10px; 
+					    margin: 0 0 0 0}
+					  .site-footer .footer-heading {
+					    font-size: 30px;
+					    text-transform: uppercase;
+					    letter-spacing: .1em;
+					    color: black;
+					    position: relative;
+					    padding-bottom: 15px; }
+					    .site-footer .footer-heading:before {
+					      content: "";
+					      background: #fff;
+					      width: 40px;
+					      height: 2px;
+					      position: absolute;
+					      bottom: 0; }
+					      
+					.collapsible {
+					  background-color: #f8f8f8;
+					  color: black;
+					  cursor: pointer;
+					  padding: 18px;
+					  width: 100%;
+					  border: none;
+					  text-align: left;
+					  outline: none;
+					  font-size: 15px;
+					}
+
+
+					.content {
+					  padding: 0 18px;
+					  display: none;
+					  overflow: hidden;
+					  color: black;
+					}
+					/*sud footer*/
+
+					.topnav {
+					  position: relative;
+					  overflow: hidden;
+					  background-color: #333;
+					  padding: 40px 40px;
+					}
+
+					.topnav a {
+					  float: left;
+					  color: transparent;
+					  text-align: center;
+					  padding: 40px 40px;
+					  text-decoration: none;
+					  font-size: 17px;
+					}
+
+					.topnav a:hover {
+					  background-color: #ddd;
+					  color: black;
+					}
+
+					.topnav a.active {
+					  background-color: #04AA6D;
+					  color: white;
+					}
+
+					.topnav-centered img {
+					  float: none;
+					  position: absolute;
+					  top: 50%;
+					  left: 50%;
+					  transform: translate(-50%, -50%);
+					}
+
+					.topnav-right {
+					  float: right;
+					}
+
+					/* Responsive navigation menu (for mobile devices) */
+					@media screen and (max-width: 600px) {
+					  .topnav a, .topnav-right {
+					    float: none;
+					    display: block;
+					  }
+					  
+					  .topnav-centered a {
+					    position: relative;
+					    top: 0;
+					    left: 0;
+					    transform: none;
+					  }
+					}
+  </style>
+</head>
+<body style="font-family: TEKO ;">
+
+	<h4 style="text-align: center;background: red;padding: 0.2em;margin: 0;color: white;">Envío incluido en 24/48h</h4>
+	<section class="allvh" id="fh5co-home"  data-section="home" style="background-image: url(img/portada.jpg);" data-stellar-background-ratio="0.5">
+	  <div class="gradient"></div>
+	  <div class="container">
+	    <div class="text-wrap">
+	      <div class="text-inner">
+	        <div class="row mt-5">
+	          <div class="col-md-12 col-md-offset-2 content-center mt-5">
+	            <h2 class="to-animate" style="align-content: center;font-family: TEKO;">Bienvenidos a Crono</h2>
+	            <h1 class="to-animate"  style="align-content: center;font-family: TEKO;">Elija su caja <br> Elige una correa <br> Crea tu estilo</h1>
+            	<div id="navbar" class="">
+            		<div class=" to-animate">
+                <a href="#" type="button" class="btn btn-success" onclick="paso1()" data-nav-section="cajas"  style="align-content: center;"><span>Empezamos</span></a>
+              	</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  	<div class="slant"></div>
+	</section>
+
+	<!--Paso 1 Cajas-->
+	<div id="escoder">
+		<section id="fh5co-work">
+			<div class="container-fluid mt-2" id="botonesCajas">
+		    <div class="row d-flex justify-content-center">
+		      <div class="col-md-6 text-center" data-section="cajas">
+		        <h4 class="to-animate text-white text-center p-2" style="background: rgba(0, 0, 0, 0.7);">Paso 1. Elija la caja que más le guste</h4>
+		      </div>
+		      <div class="col-12 mt-3"></div>
+		      <div class="col-md-6 text-center mt-5">
+				    <!--Carrusel Cajas-->
+				    <div></div>
+						<!--<div id="carouselCajas" class="carousel slide carousel-fade" data-ride="carousel">-->
+						<div id="carouselCajas" class="carousel slide carousel-fade" data-interval="false">
+						  <div class="carousel-inner" style="margin-top: -4em;">
+						    <div class="carousel-item active" >
+				        	<div>
+				        		<a   href="#azul"><img src="img/cajas/azul.png"	 class="img-responsive rounded mx-auto d-block" width="200px" onclick="cajas('azul')" ></a>
+				        		<br>
+			          			<h3 class="text-center text-white">AZUL 
+		            			<br>55&#8364;</h3>
+				        		<a href="#azul"><button type="button" class="btn btn-info text-white btn-sm"  onclick="cajas('azul')">Añadir</button></a>
+
+				        	</div>    
+						    </div>
+
+						    <div class="carousel-item">
+									<div>
+				        		<a href="#blanco" data-nav-section="blanco"><img src="img/cajas/blanco.png"  class="img-responsive rounded mx-auto d-block" width="200px" onclick="cajas('blanco')" ></a>
+				        		<br>
+			          			<h3 class="text-center text-white">BLANCO 
+			          			<br>55&#8364;</h3>	
+				        		<a href="#blanco" data-nav-section="blanco"><button type="button" class="btn btn-info text-white btn-sm"  onclick="cajas('blanco')">Añadir</button></a>			          						            						        		
+					        </div>  
+						    </div>
+
+						    <div class="carousel-item">
+						      <div>
+					        	<a href="#negro" data-nav-section="negro"><img src="img/cajas/negro.png"  class="img-responsive rounded mx-auto d-block" width="200px" onclick="cajas('negro')" ></a>
+					        	<br>
+			          			<h3 class="text-center text-white">NEGRO 
+		           				<br>55&#8364;</h3>	
+					        	<a href="#negro" data-nav-section="negro"><button type="button" class="btn btn-info text-white btn-sm"  onclick="cajas('negro')">Añadir</button></a>
+
+					        </div>      
+						    </div>
+
+						    <div class="carousel-item">
+									<div>
+										<a href="#rosa" data-nav-section="rosa"><img src="img/cajas/rosa.png"  class="img-responsive rounded mx-auto d-block" width="200px" onclick="cajas('rosa')" ></a>
+										<br>
+			          					<h3 class="text-center text-white">ROSA 
+		            					<br>55&#8364;</h3>	
+										<a href="#rosa" data-nav-section="rosa"><button type="button" class="btn btn-info text-white btn-sm"  onclick="cajas('rosa')">Añadir</button></a>
+
+									</div>    
+								</div> 
+
+						    <div class="carousel-item">
+						      <div>
+					        	<a href="#rojo" data-nav-section="rojo"><img src="img/cajas/rojo.png"  class="img-responsive rounded mx-auto d-block" width="200px" onclick="cajas('rojo')" ></a>
+					        	<br>
+			          			<h3 class="text-center text-white">Roja 
+		                        <br>55&#8364;</h3>		
+					        	<a href="#rojo" data-nav-section="rojo"><button type="button" class="btn btn-info text-white btn-sm"  onclick="cajas('rojo')">Añadir</button></a>
+
+					        </div>
+						    </div>
+							</div>
+
+						  <a class="carousel-control-prev" href="#carouselCajas" role="button" data-slide="prev">
+						    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+						    <span class="sr-only">Previous</span>
+						  </a>
+						  
+						  <a class="carousel-control-next" href="#carouselCajas" role="button" data-slide="next">
+						    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+						    <span class="sr-only">Next</span>
+						  </a>
+						</div><!--Fin Carrusel Cajas-->
+
+
+		      </div>
+		    </div>
+
+		    <!--Caja en el Centro-->
+	      <div class="col-12">
+	        <div class="text-center" id="azul" >
+		        <div class=" to-animate" style="display: none;">
+			          <img class="text-center" src="img/cajas/azul.png" class="img-fluid" alt="Responsive image" width="200px">
+			          <h4 class="text-center text-white">AZUL 
+		            <br>55&#8364;</h4>
+		        </div>
+	    		</div>
+
+	        <div class="text-center" id="blanco">
+		        <div class=" to-animate" style="display: none;">
+			          <img class="text-center" src="img/cajas/blanco.png" class="img-fluid" alt="Responsive image" width="200px">
+			          <h3 class="text-center text-white">BLANCO 
+		            <br>55&#8364;</h3>
+		        </div>
+	        </div>
+
+	        <div class="text-center" id="negro">
+	        	<div class=" to-animate" style="display: none;">
+			          <img class="text-center" src="img/cajas/negro.png" class="img-fluid" alt="Responsive image" width="200px">
+			          <h3 class="text-center text-white">NEGRO 
+		            <br>55&#8364;</h3>
+	       	 	</div>
+	        </div>
+
+	        <div class="text-center" id="rosa">
+		        <div class=" to-animate" style="display: none;">
+			          <img class="text-center" src="img/cajas/rosa.png" class="img-fluid" alt="Responsive image" width="200px">
+			          <h3 class="text-center text-white">ROSA 
+		            <br>55&#8364;</h3>
+		        </div>
+	        </div>
+	        
+	        <div class="text-center" id="rojo">
+	        	<div class=" to-animate" style="display: none;">
+			          <img class="text-center" src="img/cajas/rojo.png" class="img-fluid" alt="Responsive image" width="200px">
+			          <h3 class="text-center text-white">Roja 
+		            <br>55&#8364;</h3>
+	        	</div>
+	        </div>
+	      </div>
+
+		    <!--Boton para ir al paso 2-->
+		    <div id="navbar" class="d-flex justify-content-center">
+					<a type="button" data-nav-section="paso2" class="btn btn-danger" id="paso2" onclick="paso2()" style="text-decoration: none;color: white;"><span>Siguiente</span></a>
+
+				</div>
+			</div>
+		</section>
+	</div>
+	
+	<!--Paso 2 Correas-->
+	<section id="escoder2">
+	  <div id="fh5co-services" >
+			<div class="container">
+				<div class="row d-flex justify-content-center">
+					<div class="col-md-6" data-section="paso2">
+						<h4 class="to-animate text-white text-center p-2" style="background: rgba(0, 0, 0, 0.7);" data-section="correas">Paso 2. Elija la correa al gusto de su preferencia!!</h4>
+					</div>
+					<div class="col-12"></div>
+				</div>
+				<!--carousel carouselAzul--> 
+		    <div class="row d-flex justify-content-center">
+		      <div class="col-12 col-sm-6">
+		        <div id="carouselAzul" class="carousel slide carousel-fade" data-interval="false">
+		          <div class="carousel-inner" id="subir">
+		            <div class="carousel-item active text-center">
+		              <span class="btn" onclick="correas('16-azul_troquelada')"><img src="img/correas/azul-16.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Rosa + Correa Troquelada Azul/Rosa<br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('16-azul_troquelada')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('17-blanco_troquelada')"><img src="img/correas/azul-17.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Rosa + Correa Troquelada Blanca/Negra<br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('17-blanco_troquelada')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+		           	<div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('18-negro_troquelada')"><img src="img/correas/azul-18.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Rosa + Correa Troquelada Negra/Verde<br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('18-negro_troquelada')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('19-rojo_troquelada')"><img src="img/correas/azul-19.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Rosa + Correa Troquelada Negra/Roja<br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('19-rojo_troquelada')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('12-arcoiris_hilo')"><img src="img/correas/azul-12.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Azul + Correa Hilo Arcoíris<br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('12-arcoiris_hilo')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('13-azul_hilo')"><img src="img/correas/azul-13.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Azul + Correa Hilo Azul<br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('13-azul_hilo')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+		          	<div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('14-negro_hilo')"><img src="img/correas/azul-14.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Azul + Correa Hilo Negra<br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('14-negro_hilo')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('15-rojo_hilo')"><img src="img/correas/azul-15.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Azul + Correa Hilo Roja<br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('15-rojo_hilo')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+		            <div class="carousel-item  text-center">
+		              <span class="btn" onclick="correas('01-blanco_metal')"><img src="img/correas/azul-01.png" class="img-fluid rounded" width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Azul + Correa Metal Gris <br>15&#8364;</h4>            	
+		              <span class="btn" onclick="correas('01-blanco_metal')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>		                            
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('02-negro_metal')"><img src="img/correas/azul-02.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Azul + Correa Metal Negra <br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('02-negro_metal')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('06-oro')"><img src="img/correas/azul-06.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Azul + Correa Metal Dorada <br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('06-oro')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>		           
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('09-rojo_Metal')"><img src="img/correas/azul-09.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Azul + Correa Metal Rosa <br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('09-rojo_Metal')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('10-rosa_Metal')"><img src="img/correas/azul-10.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Azul + Correa Metal Roja <br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('10-rosa_Metal')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('03-rojo')"><img src="img/correas/azul-03.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Azul + Correa Goma Roja <br> 10&#8364;</h4>
+		              <span class="btn" onclick="correas('03-rojo')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>		              
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('04-blanco')"><img src="img/correas/azul-04.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Azul + Correa Goma Blanca <br> 10&#8364;</h4>
+		              <span class="btn" onclick="correas('04-blanco')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>		              
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('05-azul')"><img src="img/correas/azul-05.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Azul + Correa Goma Azul <br> 10&#8364;</h4>
+		              <span class="btn" onclick="correas('05-azul')">
+		              	<button type="button" class="btn btn-primary text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('07-rosa')"><img src="img/correas/azul-07.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Azul + Correa Goma Rosa <br> 10&#8364;</h4>
+		              <span class="btn" onclick="correas('07-rosa')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('08-negro')"><img src="img/correas/azul-08.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Azul + Correa Goma Negra <br> 10&#8364;</h4>
+		              <span class="btn" onclick="correas('08-negro')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('11-azul_Claro')"><img src="img/correas/azul-11.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Azul + Correa Goma Celeste <br> 10&#8364;</h4>
+		              <span class="btn" onclick="correas('11-azul_Claro')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+		          </div>
+
+		          <a class="carousel-control-prev" href="#carouselAzul" role="button" data-slide="prev">
+		            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		            <span class="sr-only">Previous</span>
+		          </a>
+		          <a class="carousel-control-next" href="#carouselAzul" role="button" data-slide="next">
+		            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+		            <span class="sr-only">Next</span>
+		          </a>
+		        </div>		        
+		      </div>
+		    </div>
+
+		    <!--carousel carouselBlanco--> 
+		    <div class="row d-flex justify-content-center">
+		      <div class="col-12 col-sm-6">
+		        <div id="carouselBlanco" class="carousel slide carousel-fade" data-ride="carousel">
+		          
+		          <div class="carousel-inner">
+		            <div class="carousel-item text-center active">
+		              <span class="btn" onclick="correas('16-azul_troquelada')"><img src="img/correas/blanco-16.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Gris + Correa Troquelada Azul/Rosa<br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('16-azul_troquelada')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('17-blanco_troquelada')"><img src="img/correas/blanco-17.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Gris + Correa Troquelada Blanca/Negra<br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('17-blanco_troquelada')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+		           	<div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('18-negro_troquelada')"><img src="img/correas/blanco-18.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Gris + Correa Troquelada Negra/Verde<br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('18-negro_troquelada')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('19-rojo_troquelada')"><img src="img/correas/blanco-19.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Gris + Correa Troquelada Negra/Roja<br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('19-rojo_troquelada')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div> 
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('12-arcoiris_hilo')"><img src="img/correas/blanco-12.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Gris + Correa Hilo Arcoíris<br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('12-arcoiris_hilo')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('13-azul_hilo')"><img src="img/correas/blanco-13.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Gris + Correa Hilo Azul<br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('13-azul_hilo')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+		          	<div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('14-negro_hilo')"><img src="img/correas/blanco-14.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Gris + Correa Hilo Negra<br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('14-negro_hilo')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('15-rojo_hilo')"><img src="img/correas/blanco-15.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Gris + Correa Hilo Roja<br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('15-rojo_hilo')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>		              		          	
+		            <div class="carousel-item text-center  ">
+		              <span class="btn" onclick="correas('01-blanco_metal')"><img src="img/correas/blanco-01.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Gris + Correa Metal Gris <br>15&#8364;</h4>            	
+		              <span class="btn" onclick="correas('01-blanco_metal')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>		                            
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('02-negro_metal')"><img src="img/correas/blanco-02.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Gris + Correa Metal Negra <br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('02-negro_metal')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>
+		            </div>
+		         		<div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('09-rojo_Metal')"><img src="img/correas/blanco-09.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Gris + Correa Metal Roja <br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('09-rojo_Metal')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('06-oro')"><img src="img/correas/blanco-06.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Gris + Correa Metal Dorada <br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('06-oro')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('10-rosa_Metal')"><img src="img/correas/blanco-10.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Gris + Correa Metal Rosa <br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('10-rosa_Metal')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>		            		            
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('03-rojo')"><img src="img/correas/blanco-03.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Gris + Correa Goma Roja <br> 10&#8364;</h4>
+		              <span class="btn" onclick="correas('03-rojo')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>		              
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('04-blanco')"><img src="img/correas/blanco-04.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Gris + Correa Goma Blanca <br> 10&#8364;</h4>
+		              <span class="btn" onclick="correas('04-blanco')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>		              
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('05-azul')"><img src="img/correas/blanco-05.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Gris + Correa Goma Azul <br> 10&#8364;</h4>
+		              <span class="btn" onclick="correas('05-azul')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('07-rosa')"><img src="img/correas/blanco-07.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Gris + Correa Goma Rosa <br> 10&#8364;</h4>
+		              <span class="btn" onclick="correas('07-rosa')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('08-negro')"><img src="img/correas/blanco-08.png" class="img-fluid rounded"   width="350px"alt="..."></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Gris + Correa Goma Negra <br> 10&#8364;</h4>
+		              <span class="btn" onclick="correas('08-negro')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('11-azul_Claro')"><img src="img/correas/blanco-11.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Gris + Correa Goma Azul <br> 10&#8364;</h4>
+		              <span class="btn" onclick="correas('11-azul_Claro')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+
+                    
+		          </div>
+		          <a class="carousel-control-prev" href="#carouselBlanco" role="button" data-slide="prev">
+		            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		            <span class="sr-only">Previous</span>
+		          </a>
+		          <a class="carousel-control-next" href="#carouselBlanco" role="button" data-slide="next">
+		            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+		            <span class="sr-only">Next</span>
+		          </a>
+		        </div>
+		          <ol class="carousel-indicators">
+		          </ol>
+		      </div>
+		    </div>
+
+		    <!--carousel carouselNegro--> 
+		    <div class="row d-flex justify-content-center">
+		      <div class="col-12 col-sm-6">
+		        <div id="carouselNegro" class="carousel slide carousel-fade" data-ride="carousel">
+
+		          <div class="carousel-inner">
+			            <div class="carousel-item text-center active">
+		              <span class="btn" onclick="correas('16-azul_troquelada')"><img src="img/correas/negro-16.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Negra  + Correa Troquelada Azul/Rosa<br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('16-azul_troquelada')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('17-blanco_troquelada')"><img src="img/correas/negro-17.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Negra  + Correa Troquelada Blanca/Negra<br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('17-blanco_troquelada')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+		           	<div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('18-negro_troquelada')"><img src="img/correas/negro-18.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Negra  + Correa Troquelada Negra/Verde<br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('18-negro_troquelada')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('19-rojo_troquelada')"><img src="img/correas/negro-19.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Negra  + Correa Troquelada Negra/Roja<br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('19-rojo_troquelada')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div> 
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('12-arcoiris_hilo')"><img src="img/correas/negro-12.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Negra  + Correa Hilo Arcoíris<br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('12-arcoiris_hilo')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('13-azul_hilo')"><img src="img/correas/negro-13.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Negra  + Correa Hilo Azul<br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('13-azul_hilo')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+		          	<div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('14-negro_hilo')"><img src="img/correas/negro-14.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Negra  + Correa Hilo Negra<br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('14-negro_hilo')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('15-rojo_hilo')"><img src="img/correas/negro-15.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Negra  + Correa Hilo Roja<br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('15-rojo_hilo')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>		              		          	
+		            <div class="carousel-item text-center  ">
+		              <span class="btn" onclick="correas('01-negro_metal')"><img src="img/correas/negro-01.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Negra  + Correa Metal Gris  <br>15&#8364;</h4>            	
+		              <span class="btn" onclick="correas('01-negro_metal')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>		                            
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('02-negro_metal')"><img src="img/correas/negro-02.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Negra  + Correa Metal Negra <br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('02-negro_metal')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>
+		            </div>
+		         		<div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('09-rojo_Metal')"><img src="img/correas/negro-09.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Negra  + Correa Metal Roja <br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('09-rojo_Metal')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('06-oro')"><img src="img/correas/negro-06.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Negra  + Correa Metal Dorada <br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('06-oro')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('10-rosa_Metal')"><img src="img/correas/negro-10.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Negra  + Correa Metal Rosa <br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('10-rosa_Metal')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>		            		            
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('03-rojo')"><img src="img/correas/negro-03.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Negra  + Correa Goma Roja <br> 10&#8364;</h4>
+		              <span class="btn" onclick="correas('03-rojo')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>		              
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('04-blanco')"><img src="img/correas/negro-04.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Negra  + Correa Goma Blanca <br> 10&#8364;</h4>
+		              <span class="btn" onclick="correas('04-blanco')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>		              
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('05-azul')"><img src="img/correas/negro-05.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Negra  + Correa Goma Azul <br> 10&#8364;</h4>
+		              <span class="btn" onclick="correas('05-azul')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('07-rosa')"><img src="img/correas/negro-07.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Negra  + Correa Goma Rosa <br> 10&#8364;</h4>
+		              <span class="btn" onclick="correas('07-rosa')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('08-negro')"><img src="img/correas/negro-08.png" class="img-fluid rounded"   width="350px"alt="..."></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Negra  + Correa Goma Negra <br> 10&#8364;</h4>
+		              <span class="btn" onclick="correas('08-negro')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('11-azul_Claro')"><img src="img/correas/negro-11.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Negra  + Correa Goma Azul <br> 10&#8364;</h4>
+		              <span class="btn" onclick="correas('11-azul_Claro')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+
+                       
+		          </div>
+		          <a class="carousel-control-prev" href="#carouselNegro" role="button" data-slide="prev">
+		            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		            <span class="sr-only">Previous</span>
+		          </a>
+		          <a class="carousel-control-next" href="#carouselNegro" role="button" data-slide="next">
+		            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+		            <span class="sr-only">Next</span>
+		          </a>
+		        </div>
+		          <ol class="carousel-indicators">
+		          </ol>
+		      </div>
+		    </div>
+
+		    <!--carousel carouselRojo--> 
+		    <div class="row d-flex justify-content-center">
+		      <div class="col-12 col-sm-6">
+		        <div id="carouselRojo" class="carousel slide carousel-fade" data-ride="carousel">
+
+		          <div class="carousel-inner">
+			            <div class="carousel-item text-center active">
+		              <span class="btn" onclick="correas('16-azul_troquelada')"><img src="img/correas/rojo-16.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Roja  + Correa Troquelada Azul/Rosa<br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('16-azul_troquelada')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('17-blanco_troquelada')"><img src="img/correas/rojo-17.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Roja  + Correa Troquelada Blanca/Roja<br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('17-blanco_troquelada')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+		           	<div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('18-negro_troquelada')"><img src="img/correas/rojo-18.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Roja  + Correa Troquelada Negra/Verde<br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('18-negro_troquelada')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('19-rojo_troquelada')"><img src="img/correas/rojo-19.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Roja  + Correa Troquelada Negra/Roja<br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('19-rojo_troquelada')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div> 
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('12-arcoiris_hilo')"><img src="img/correas/rojo-12.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Negra  + Correa Hilo Arcoíris<br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('12-arcoiris_hilo')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('13-azul_hilo')"><img src="img/correas/rojo-13.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Negra  + Correa Hilo Azul<br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('13-azul_hilo')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+		          	<div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('14-negro_hilo')"><img src="img/correas/rojo-14.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Roja + Correa Hilo Negra<br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('14-negro_hilo')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('15-rojo_hilo')"><img src="img/correas/rojo-15.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Roja  + Correa Hilo Roja<br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('15-rojo_hilo')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>		              		          	
+		            <div class="carousel-item text-center  ">
+		              <span class="btn" onclick="correas('01-negro_metal')"><img src="img/correas/rojo-01.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Roja  + Correa Metal Gris  <br>15&#8364;</h4>            	
+		              <span class="btn" onclick="correas('01-negro_metal')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>		                            
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('02-negro_metal')"><img src="img/correas/rojo-02.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Roja  + Correa Metal Negra <br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('02-negro_metal')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>
+		            </div>
+		         		<div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('09-rojo_Metal')"><img src="img/correas/rojo-09.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Roja  + Correa Metal Roja <br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('09-rojo_Metal')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('06-oro')"><img src="img/correas/rojo-06.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Roja  + Correa Metal Dorada <br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('06-oro')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('10-rosa_Metal')"><img src="img/correas/rojo-10.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Roja  + Correa Metal Rosa <br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('10-rosa_Metal')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>		            		            
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('03-rojo')"><img src="img/correas/rojo-03.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Roja  + Correa Goma Roja <br> 10&#8364;</h4>
+		              <span class="btn" onclick="correas('03-rojo')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>		              
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('04-blanco')"><img src="img/correas/rojo-04.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Roja  + Correa Goma Blanca <br> 10&#8364;</h4>
+		              <span class="btn" onclick="correas('04-blanco')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>		              
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('05-azul')"><img src="img/correas/rojo-05.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Roja  + Correa Goma Azul <br> 10&#8364;</h4>
+		              <span class="btn" onclick="correas('05-azul')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('07-rosa')"><img src="img/correas/rojo-07.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Roja  + Correa Goma Rosa <br> 10&#8364;</h4>
+		              <span class="btn" onclick="correas('07-rosa')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('08-negro')"><img src="img/correas/rojo-08.png" class="img-fluid rounded"   width="350px"alt="..."></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Roja  + Correa Goma Roja <br> 10&#8364;</h4>
+		              <span class="btn" onclick="correas('08-negro')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('11-azul_Claro')"><img src="img/correas/rojo-05.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Roja  + Correa Goma Azul <br> 10&#8364;</h4>
+		              <span class="btn" onclick="correas('11-azul_Claro')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+
+
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('11-azul_Claro')"><img src="img/correas/rojo-11.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Roja + Correa Goma Celeste <br> 10&#8364;</h4>
+		              <span class="btn" onclick="correas('11-azul_Claro')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+
+                      
+		          </div>
+		          <a class="carousel-control-prev" href="#carouselRojo" role="button" data-slide="prev">
+		            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		            <span class="sr-only">Previous</span>
+		          </a>
+		          <a class="carousel-control-next" href="#carouselRojo" role="button" data-slide="next">
+		            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+		            <span class="sr-only">Next</span>
+		          </a>
+		        </div>
+		          <ol class="carousel-indicators">
+		          </ol>
+		      </div>
+		    </div>
+
+		    <!--carousel carouselRosa--> 
+		    <div class="row d-flex justify-content-center">
+		      <div class="col-12 col-sm-6">
+		        <div id="carouselRosa" class="carousel slide carousel-fade" data-ride="carousel">
+		          <div class="carousel-inner">
+			            <div class="carousel-item text-center active">
+		              <span class="btn" onclick="correas('16-azul_troquelada')"><img src="img/correas/rosa-16.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Rosa  + Correa Troquelada Azul/Rojo<br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('16-azul_troquelada')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('17-blanco_troquelada')"><img src="img/correas/rosa-17.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Rosa  + Correa Troquelada Blanca/Negra<br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('17-blanco_troquelada')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+		           	<div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('18-negro_troquelada')"><img src="img/correas/rosa-18.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Rosa  + Correa Troquelada Negra/Verde<br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('18-negro_troquelada')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('19-rojo_troquelada')"><img src="img/correas/rosa-19.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Rosa  + Correa Troquelada Negra/Rosa<br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('19-rojo_troquelada')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div> 
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('12-arcoiris_hilo')"><img src="img/correas/rosa-12.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Rosa  + Correa Hilo Arcoíris<br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('12-arcoiris_hilo')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('13-azul_hilo')"><img src="img/correas/rosa-13.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Rosa  + Correa Hilo Azul<br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('13-azul_hilo')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+		          	<div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('14-negro_hilo')"><img src="img/correas/rosa-14.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Rosa + Correa Hilo Negra<br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('14-negro_hilo')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('15-rojo_hilo')"><img src="img/correas/rosa-15.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Rosa  + Correa Hilo Rojo<br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('15-rojo_hilo')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>		              		          	
+		            <div class="carousel-item text-center  ">
+		              <span class="btn" onclick="correas('01-negro_metal')"><img src="img/correas/rosa-01.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Rosa  + Correa Metal Gris  <br>15&#8364;</h4>            	
+		              <span class="btn" onclick="correas('01-negro_metal')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>		                            
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('02-negro_metal')"><img src="img/correas/rosa-02.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Rosa  + Correa Metal Negra <br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('02-negro_metal')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>
+		            </div>
+		         		<div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('09-rojo_Metal')"><img src="img/correas/rosa-09.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Rosa  + Correa Metal Rojo <br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('09-rojo_Metal')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('06-oro')"><img src="img/correas/rosa-06.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Rosa  + Correa Metal Dorada <br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('06-oro')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('10-rosa_Metal')"><img src="img/correas/rosa-10.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Rosa  + Correa Metal Rosa <br> 15&#8364;</h4>
+		              <span class="btn" onclick="correas('10-rosa_Metal')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>		            		            
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('03-rojo')"><img src="img/correas/rosa-03.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Rosa  + Correa Goma Rojo <br> 10&#8364;</h4>
+		              <span class="btn" onclick="correas('03-rojo')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>		              
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('04-blanco')"><img src="img/correas/rosa-04.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Rosa  + Correa Goma Blanca <br> 10&#8364;</h4>
+		              <span class="btn" onclick="correas('04-blanco')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>		              
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('05-azul')"><img src="img/correas/rosa-05.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Rosa  + Correa Goma Azul <br> 10&#8364;</h4>
+		              <span class="btn" onclick="correas('05-azul')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('07-rosa')"><img src="img/correas/rosa-07.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Rosa  + Correa Goma Rosa <br> 10&#8364;</h4>
+		              <span class="btn" onclick="correas('07-rosa')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('08-negro')"><img src="img/correas/rosa-08.png" class="img-fluid rounded"   width="350px"alt="..."></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Rosa  + Correa Goma Roja <br> 10&#8364;</h4>
+		              <span class="btn" onclick="correas('08-negro')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('11-azul_Claro')"><img src="img/correas/rosa-05.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Roja  + Correa Goma Azul <br> 10&#8364;</h4>
+		              <span class="btn" onclick="correas('11-azul_Claro')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+		            <div class="carousel-item text-center">
+		              <span class="btn" onclick="correas('11-azul_Claro')"><img src="img/correas/rosa-11.png" class="img-fluid rounded"   width="350px"></span>
+		              <h4 class="text-center text-white p-0 m-0">Caja Roja  + Correa Goma Rosa <br> 10&#8364;</h4>
+		              <span class="btn" onclick="correas('11-azul_Claro')">
+		              	<button type="button" class="btn btn-info text-white btn-sm" >Añadir</button>
+		              </span>			              
+		            </div>
+
+
+                       
+		          </div>
+
+		          <a class="carousel-control-prev" href="#carouselRosa" role="button" data-slide="prev">
+		            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		            <span class="sr-only">Previous</span>
+		          </a>
+		          <a class="carousel-control-next" href="#carouselRosa" role="button" data-slide="next">
+		            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+		            <span class="sr-only">Next</span>
+		          </a>
+		        </div>
+		      </div>
+				</div>
+
+				<!--Boton para ir a paso otros-->
+	    	<div id="navbar" class="d-flex justify-content-center">
+					<a type="button" id="paso3" onclick="paso3()" data-nav-section="formula" ><button class="btn btn-danger">Siguiente </button></a>
+				</div>
+	  	</div>
+	  </div>	
+	</section>
+
+	<!--productos-->
+	<section id="escoder4">
+		<div id="fh5co-contact">
+			<div class="container-fluid">
+				<div class="row justify-content-center">
+					<div class="col-md-6" data-section="productos">
+						<h4 class="to-animate text-white text-center p-2" style="background: rgba(0, 0, 0, 0.7);">Paso 3. Puede agregar otros productos</h4>
+					</div>
+					<div class="col-12"><br></div>
+					<!--Audifonos-->
+					<div class="col-12 col-md-3">
+						<img src="img/productos/audifonos.jpg" width="70%">
+						<div class="card-body">
+					    <h5 class="font-weight-bold p-0 m-0">7,00&#8364;</h5>
+					    <p class="text-secondary p-0 m-0" style="font-size: 1rem; line-height: 1rem;">Audífonos Inalámbrico Bluetooth I9s Tws</p>
+					    <button class="btn btn-primary rounded btn-sm" data-toggle="tooltip" data-placement="top" title="Agregar al Pedido" id="audi1-mas"  style="font-size: 0.7rem; line-height: 0.7rem;">AÑADIR</button>
+					    <button class="btn btn-danger rounded btn-sm" data-toggle="tooltip" data-placement="top" title="Quitar del Pedido" id="audi1-menos" style="font-size: 0.7rem; line-height: 0.7rem;">AÑADIDO</button>
+					  </div>
+					</div>
+					<!--Audifonos2-->
+					<div class="col-12 col-md-3">
+						  <img src="img/productos/audifonos2.jpg" width="70%">
+						  <div class="card-body">
+						    <h5 class="font-weight-bold p-0 m-0">15,00&#8364;</h5>
+						    <p class="text-secondary p-0 m-0" style="font-size: 1rem; line-height: 1rem;">Audífonos Inalámbrico Bluetooth</p>
+						    <button class="btn btn-primary rounded btn-sm" data-toggle="tooltip" data-placement="top" title="Agregar al Pedido" id="audi2-mas" style="font-size: 0.7rem; line-height: 0.7rem;">AÑADIR</button>
+					    	<button class="btn btn-danger rounded btn-sm" data-toggle="tooltip" data-placement="top" title="Quitar del Pedido" id="audi2-menos" style="font-size: 0.7rem; line-height: 0.7rem;">AÑADIDO</button>
+						  </div>
+					</div>
+					<!--Cargadores-->
+					<div class="col-12 col-md-3">
+						  <img src="img/productos/cargadores.jpg" width="70%">
+						  <div class="card-body">
+						    <h5 class="font-weight-bold p-0 m-0">5,00&#8364;</h5>
+						    <p class="text-secondary p-0 m-0" style="font-size: 1rem; line-height: 1rem;">Cargador Samsung 15w Carga Rapida Original</p>
+						    <button class="btn btn-primary rounded btn-sm" data-toggle="tooltip" data-placement="top" title="Agregar al Pedido" id="carga-mas" style="font-size: 0.7rem; line-height: 0.7rem;">AÑADIR</button>
+					    	<button class="btn btn-danger rounded btn-sm" data-toggle="tooltip" data-placement="top" title="Quitar del Pedido" id="carga-menos" style="font-size: 0.7rem; line-height: 0.7rem;">AÑADIDO</button>
+						  </div>
+					</div>
+					<!--Protector de pantalla-->
+					<div class="col-12 col-md-3">
+						  <img src="img/productos/protectorpantalla.jpg" width="70%">
+						  <div class="card-body">
+						    <h5 class="font-weight-bold p-0 m-0">12.00&#8364;</h5>
+						    <p class="text-secondary p-0 m-0" style="font-size: 1rem; line-height: 1rem;">Qosea-Protector de pantalla de vidrio templado</p>
+						    <button class="btn btn-primary rounded btn-sm" data-toggle="tooltip" data-placement="top" title="Agregar al Pedido" id="prot-mas" style="font-size: 0.7rem; line-height: 0.7rem;">AÑADIR</button>
+					    	<button class="btn btn-danger rounded btn-sm" data-toggle="tooltip" data-placement="top" title="Quitar del Pedido" id="prot-menos" style="font-size: 0.7rem; line-height: 0.7rem;">AÑADIDO</button>
+						  </div>
+					</div>
+
+					<div class="col-12 text-center mt-3">
+
+						<!--Boton para ir a paso 3-->
+			    	<div id="navbar" class="m-0">
+							<a type="button"  id="otros" onclick="paso3()" data-nav-section="formula" ><button class="btn btn-danger">Siguiente</button></a>
+						</div>
+						<br>
+					</div>
+
+					
+				</div>
+			</div>
+		</div>
+	</section>
+
+				
+	<!--Paso 3-->
+	<section class="allvh" id="escoder3" >	
+
+		<!--Formulario-->
+	  <div class="container-fluid" id="definitivo">
+	  	<div data-section="formula"><br></div>
+			<!-- row -->
+			<div class="row">
+				
+				<!-- Product main img -->
+				<div class="col-md-4">
+					<div id="product-main-img">
+						<div class="product-preview">
+							<img class="pl-5" src="" width="100%" id="nuevaFoto">
+						</div>
+					</div>
+				</div><!--Fin de Product main img -->
+
+				<!-- Product details -->
+				<div class="col-md-6">
+					<div class="product-details">
+
+						<h2 class="product-price p-0 m-0"  id="price" hidden></h2>
+						<h2 class="product-price p-0 m-0"   id="totProductos" hidden></h2>
+						<h2 class="product-price p-0 m-0"  id="totRelProd"></h2>
+						<h4><strong>Binvenido a la nueva Smartwatch</strong> </h4>
+						<span class="btn" style="background:red ; padding: 14px 28px;margin: 0 0 0em 20%;"><a id="btnEnviar1" style="text-decoration: none; color: white;">Comprar ahora</a></span>
+						<br><br>
+						<p>La libertad comienza cuando decides los mejor para ti.
+						Envianos tus datos para reservar tu Crono Prowath personalizado.La libertad comienza cuando decides los mejor para ti.
+						</p>
+						<div>
+
+						<form id="formulario">
+			    		<div class="row">
+              	<!-- NOMBRE COMPLETO -->
+				    		<div class="col-12 col-sm-5">
+		              <div class="form-group m-0">
+		                <label class="font-weight-bold p-0 m-0 text-dark" style="font-size: .7rem;">NOMBRE COMPLETO</label>
+		                <input type="text" class="cuest-control" id="nombreDef" name="nombreDef" placeholder="NOMBRES Y APELLIDOS" style="font-size: .7rem;" required>
+		              </div>
+	              </div>
+
+	              <!-- CODIGO POSTAL -->
+	              <div class="col-12 col-sm-5">
+									<div class="form-group m-0">
+									  <label class="font-weight-bold p-0 m-0 text-dark" style="font-size: .7rem;">TELEFONO</label>
+									  <input type="text" class="cuest-control" id="telfDef" name="telfDef" placeholder="TELEFONO" style="font-size: .7rem;" required>
+									</div>
+              	</div>
+              								
+								<!-- DIRECCION -->
+				    		<div class="col-12 col-sm-5">
+		              <div class="form-group m-0">
+		                <label class="font-weight-bold p-0 m-0 text-dark" style="font-size: .7rem;">DIRECCION</label>
+		                <input type="text" class="cuest-control" id="dirDef" name="dirDef" placeholder="DIRECCION" style="font-size: .7rem;" required>
+		              </div>
+	              </div>
+
+	              <!-- TELEFONO -->
+	              <div class="col-12 col-sm-5">
+									<div class="form-group m-0">
+									  <label class="font-weight-bold p-0 m-0 text-dark" style="font-size: .7rem;">CODIGO POSTAL</label>
+									  <input type="text" class="cuest-control" id="codPostDef" name="codPostDef" placeholder="CODIGO POSTAL" style="font-size: .7rem;" required>
+									</div>
+              	</div>
+								<div style="display: none;">
+										<!-- TOTAL RELOJ  -->
+		              	<div class="col-12 col-sm-4">
+											<div class="form-group m-0">
+											  <label class="font-weight-bold p-0 m-0 text-dark" style="font-size: .7rem;">TOTAL RELOJ &#8364;</label>
+											  <input type="text" class="cuest-control" id="totalDef" name="totalDef" placeholder="Total euro" style="font-size: .7rem;" required readonly>
+											</div>
+		              	</div>
+
+              	
+		              	<!-- TOTAL ADICIONALES -->
+		              	<div class="col-12 col-sm-4">
+											<div class="form-group m-0">
+											  <label class="font-weight-bold p-0 m-0 text-dark" style="font-size: .7rem;">TOTAL ADICIONALES &#8364;</label>
+											  <input type="text" class="cuest-control" id="totalProDef" name="totalProDef" placeholder="Total euro" style="font-size: .7rem;" required readonly>
+											</div>
+		              	</div>
+
+		              	<!-- TOTAL GENERAL -->
+		              	<div class="col-12 col-sm-4">
+											<div class="form-group m-0">
+											  <label class="font-weight-bold p-0 m-0 text-dark" style="font-size: .7rem;">TOTAL GENERAL &#8364;</label>
+											  <input type="text" class="cuest-control" id="totalGralDef" name="totalGralDef" placeholder="Total euro" style="font-size: .7rem;" required readonly>
+											</div>
+		              	</div>
+
+										<!-- RELOJ -->
+						 				<div class="col-12 col-sm-4">
+											<div class="form-group m-0">
+											  <label class="font-weight-bold p-0 m-0 text-dark" style="font-size: .7rem;">RELOJ</label>
+											  <input type="text" class="cuest-pro text-uppercase" id="cajaDef" name="cajaDef" placeholder="CAJA" style="font-size: .7rem;" readonly required>
+											  <input type="text" class="cuest-pro text-uppercase" id="correaDef" name="correaDef" placeholder="CORREA" style="font-size: .7rem;" readonly required>
+											</div>
+			             </div>
+
+
+			              <!-- PRODUCTOS ADICIONALES -->
+			              <div class="col-12 col-sm-8">
+			              	<label class="font-weight-bold p-0 m-0 text-dark" style="font-size: .7rem;">PRODUCTOS ADICIONALES</label>
+			              	<div class="form-group m-0">
+				                <input type="text" class="cuest-pro border-0" id="audi1Def" name="audi1Def" style="font-size: .7rem;" readonly required>
+				              </div>	              
+				              <div class="form-group m-0">
+				                <input type="text" class="cuest-pro border-0" id="audi2Def" name="audi2Def" style="font-size: .7rem;" readonly required>
+				              </div>	              
+				              <div class="form-group m-0">
+				                <input type="text" class="cuest-pro border-0" id="cargaDef" name="cargaDef" style="font-size: .7rem;" readonly required>
+				              </div>	              
+				              <div class="form-group m-0">
+				                <input type="text" class="cuest-pro border-0" id="protDef" name="protDef" style="font-size: .7rem;" readonly required>
+				              </div>
+			              </div>			              
+			          </div>   
+
+	              <!-- FOTO -->
+	              <div class="form-group m-0" hidden>
+	                <label style="font-size: .7rem;">FOTO</label>
+	                <input type="text" class="cuest-control" id="fotoDef" name="fotoDef" placeholder="FOTO" style="font-size: .7rem;" readonly required>
+	              </div>				    		
+		              
+			    		</div>
+
+		          <span class="btn btn-sm btn-danger mt-2 mb-2 py-0 px-2"  id="btnEnviarFormulario">Enviar</span>	
+		        </form>
+					</div>
+				</div>
+			</div>		
+		</div>
+		<div class="card-group container-fluid p-0">
+					<div class="card">
+						<img src="img/entregarapida.png" style="height:75px;width: 75px;margin-top:0.3em;" class="card-img-top rounded mx-auto d-block" alt="...">
+						<div class="card-body">
+								 <h5 class="card-title text-center">Envío Incluido 24/48 h</h5>
+						</div>
+						 </div>
+							<div class="card">
+								 <img src="img/pagar.png" style="height:75px;width: 75px;margin-top:0.3em;" class="card-img-top rounded mx-auto d-block" alt="...">
+								<div class="card-body">
+									<h5 class="card-title text-center">Pago Contrareembolso</h5>
+								</div>
+							</div>
+							<div class="card">
+								 <img src="img/devoluciondedinero.png" style="height:75px;width: 75px;margin-top:0.3em;" class="card-img-top rounded mx-auto d-block" alt="...">
+									<div class="card-body">
+								  	<h5 class="card-title text-center">Devolución 14 días</h5>
+									</div>
+							</div>
+							<div class="card">
+								    <img src="img/servicioalcliente.png" style="height:75px;width: 75px;margin-top:0.3em;" class="card-img-top rounded mx-auto d-block" alt="...">
+									<div class="card-body">
+								      <h5 class="card-title text-center">Soporte técnico</h5>
+								  </div>
+							</div>
+						</div>
+				</div>			
+	</section>
+
+	</section>
+
+	<section id="escoder5" class="container-fluid p-0" >
+		<div class=" py-2 m-0">
+			<h3 class="text-black"style="text-align: center;">Características principales</h3><br>
+			<p class="text-left text-black px-5 py-2" style="color: black;">-<a href="Instrucciones_Espanol.pdf" target="_blank" type="button" class="   " >Instrucciones</a> (enlace a las instrucciones) y aplicación móvil en Español.<br>
+				<br> 
+				-Carga el reloj cómodamente con las bases inalámbrica. <br>
+				<br>
+				-Recibe notificaciones de Whatsaap,Facebook,
+				instagram,email etc.<br>
+				<br>
+				-Elige entre mas de 40 fondos de pantalla o personalizalo con tus fotos favoritas.<br>
+				<br>
+				-Dispone de dos botones funcionales,no decorativo
+				controla tu salud a lo largo del día.<br>
+				<br>
+				-Pantalla grande de 1.75 pulgadas.</p>
+		</div>		
+	 <h2 class="text-center">Testimonios</h2>
+		 <div class="card-group container-fluid p-2 m-0 ">
+          <div class="card" style="border:black solid ;">
+            <img src="img/test1.jpg" style="height:200px;width: 200px;border-radius: 1.5em;" class="card-img-top rounded mx-auto d-block" alt="...">
+            <div class="card-body " >
+                 <h5 class="card-title text-center ">César T.</h5>
+                 <img src="img/estrellas.jpeg" class="card-img-top rounded mx-auto d-block" style="height:50px;width: 180px;">
+                 <h4 class="test-title">Se lo he regalado a mi mujer y le ha encantado. El reloj es muy bonito, la correa de metal le queda genial y elegante. Ya le he dicho que me coy a comprar uno para mi. El trato y la atención al cliente de la tienda de 10</h4>
+            </div>
+             </div>
+              <div class="card" style="border:black solid ;">
+                 <img src="img/test4.jpg"style="height:200px;width: 200px; border-radius: 1.5em;;" class="card-img-top rounded mx-auto d-block" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title text-center">Lorena L.</h5>
+                  <img src="img/estrellas.jpeg" class="card-img-top rounded mx-auto d-block" style="height:50px;width: 180px;">
+                  <h4 class="test-title">Está genial, me encanta el diseño y la correa. Es un reloj que tiene muchas prestaciones por el precio que tiene. Realice el envío un martes y el miércoles por la tarde ya lo tenía en casa. Tienda confiable</h4>
+                </div>
+              </div>
+              <div class="card" style="border:black solid ;">
+                 <img src="img/test7.jpg" style="height:200px;width: 200px;border-radius: 1.5em;" class="card-img-top rounded mx-auto d-block" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title text-center">Antonio P.</h5>
+                    <img src="img/estrellas.jpeg" class="card-img-top rounded mx-auto d-block" style="height:50px;width: 180px;">
+                    <h4 class="test-title">Agradable, ligero. Puedes cambiar tu pantalla por unas muy bonitas o prácticas. Incluso hay otros en Internet más caros y no tienen las características de este. Medición de la calidad del sueño, medición del ejercicio, avisos sms, mensajes y llamadas. Lo recomiendo totalmente.</h4>                    
+                  </div>
+              </div>
+
+            </div>
+		 	<div class="card-group container-fluid p-2 m-0 ">
+          <div class="card" style="border:black solid ;">
+            <img src="img/test5.jpg" style="height:200px;width: 200px;border-radius: 1.5em;" class="card-img-top rounded mx-auto d-block" alt="...">
+            <div class="card-body " >
+                 <h5 class="card-title text-center ">Arcadio L.</h5>
+                 <img src="img/estrellas.jpeg" class="card-img-top rounded mx-auto d-block" style="height:50px;width: 180px;">
+                 <h4 class="test-title">Soy una persona concierta  edad y era un poco reacio a saber si sería capaz de utilizar el reloj. La verdad es que es muy fácil y una duda que tuve la tienda me lo solucionó rápidamente. Gracias al reloj estoy paseando todas las mañanas y poder contar los pasos que hago, hace que tenga como reto superar los del día anterior. Lo recomiendo con los ojos cerrados.</h4>
+            </div>
+             </div>
+              <div class="card" style="border:black solid ;">
+                 <img src="img/test6.jpg"style="height:200px;width: 200px;border-radius: 1.5em;" class="card-img-top rounded mx-auto d-block" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title text-center">Mónica E..</h5>
+                  <img src="img/estrellas.jpeg" class="card-img-top rounded mx-auto d-block" style="height:50px;width: 180px;">
+                  <h4 class="test-title">El reloj por el precio que tiene cumple con lo que promete y más, es un reloj fácil de utilizar y estéticamente muy bonito. Lo utilizo para el día a día y de momento no he tenido ningún problema con él. 
+									La chica que me llamo de la tienda en todo momento ha sido muy atenta antes y después de la compra, siempre prestándose a ayudarme por si tuviera algún problema con el reloj y como ya he comentado todo perfecto. Calidad-precio-atención al cliente muy recomendable.</h4>
+                </div>
+              </div>
+              <div class="card" style="border:black solid ;">
+                 <img src="img/test3.jpg" style="height:200px;width: 200px;border-radius: 1.5em;" class="card-img-top rounded mx-auto d-block" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title text-center">Sergio F.</h5>
+                    <img src="img/estrellas.jpeg" class="card-img-top rounded mx-auto d-block" style="height:50px;width: 180px;">
+                    <h4 class="test-title">AQuería un smartwatch bonito, que me dijese la hora, que me monitoree los pasos y el ejercicio pero sobre todo que avisará de las notificaciones en la pantalla del reloj y este reunía todos los requisitos además de que no es tan caro cómo otros de su rango. 
+										La batería dura bastante, la pantalla se ve bien y es colorida con varias intensidades de brillo, la verdad es que es una compra recomendada si no quieres ir a por uno más caro.</h4>                    
+                  </div>
+              </div>
+
+            </div>
+
+					<div class=" py-2 m-0">
+						<h3 class="text-black"style="text-align: center;">¿Porque crono site?</h3><br>
+						<p class="text-left text-black px-5 py-2" style="color: black;">Atención al cliente personalizada (si no te aclaras te ayudamos).<br>
+							<br>
+							Solamente pagas cuando lo recibes en tu casa.(Pago contrareembolso).<br>
+							<br>
+							Envió express las 48 horas.<br>
+							<br>
+							Garantía crono.<br>
+							<br>
+							Empresa ubicada en España.<br>
+
+
+						</p>
+					</div>
+
+
+
+		<br><br><br>
+	
+		<h1 style="text-align: center;">MÁS FUNCIONES</h1>
+		
+		<div class="card-group">
+		  <div class="card">
+		    <img src="img/funciones/01.jpg" style="height:75px;width: 75px;margin-top:0.3em; " class="card-img-top rounded mx-auto d-block" alt="...">
+		    <div class="card-body">
+		      <h5 class="card-title text-center">Calorías Consumidas</h5>
+		    </div>
+		  </div>
+		  <div class="card">
+		    <img src="img/funciones/02.jpg" style="height:75px;width: 75px;margin-top:0.3em;" class="card-img-top rounded mx-auto d-block" alt="...">
+		    <div class="card-body">
+		      <h5 class="card-title text-center">Distancia recorrida</h5>
+		    </div>
+		  </div>
+		  <div class="card">
+		    <img src="img/funciones/03.jpg" style="height:75px;width: 75px;margin-top:0.3em;" class="card-img-top rounded mx-auto d-block" alt="...">
+		    <div class="card-body">
+		      <h5 class="card-title text-center">Contador de pasos</h5>
+		    </div>
+		  </div>
+
+		    <div class="card ">
+		    <img src="img/funciones/04.jpg" style="height:75px;width: 75px;margin-top:0.3em;border: none;" class="card-img-top rounded mx-auto d-block" alt="...">
+		    <div class="card-body">
+		      <h5 class="card-title text-center">Meta de pasos diaria</h5>
+		    </div>
+		  </div>
+		</div>
+
+		<div class="card-group">
+		  <div class="card">
+		    <img src="img/funciones/05.jpg" style="height:75px;width: 75px;margin-top:0.3em;" class="card-img-top rounded mx-auto d-block" alt="...">
+		    <div class="card-body">
+		      <h5 class="card-title text-center">Modo no molestar</h5>
+		    </div>
+		  </div>
+		  <div class="card">
+		    <img src="img/funciones/06.jpg" style="height:75px;width: 75px;margin-top:0.3em;" class="card-img-top rounded mx-auto d-block" alt="...">
+		    <div class="card-body">
+		      <h5 class="card-title text-center">Monitorización del sueño</h5>
+		    </div>
+		  </div>
+		  <div class="card">
+		    <img src="img/funciones/07.jpg" style="height:75px;width: 75px;margin-top:0.3em;" class="card-img-top rounded mx-auto d-block" alt="...">
+		    <div class="card-body">
+		      <h5 class="card-title text-center">Metas de sueño</h5>
+		    </div>
+		  </div>
+
+		    <div class="card">
+		    <img src="img/funciones/08.jpg" style="height:75px;width: 75px;margin-top:0.3em;" class="card-img-top rounded mx-auto d-block" alt="...">
+		    <div class="card-body">
+		      <h5 class="card-title text-center">Frecuencia cardíaca</h5>
+		    </div>
+		  </div>
+		</div>
+
+		<div class="card-group">
+		  <div class="card">
+		    <img src="img/funciones/09.jpg" style="height:75px;width: 75px;margin-top:0.3em; " class="card-img-top rounded mx-auto d-block" alt="...">
+		    <div class="card-body">
+		      <h5 class="card-title text-center">Tiempo</h5>
+		    </div>
+		  </div>
+		  <div class="card">
+		    <img src="img/funciones/10.jpg" style="height:75px;width: 75px;margin-top:0.3em;" class="card-img-top rounded mx-auto d-block" alt="...">
+		    <div class="card-body">
+		      <h5 class="card-title text-center">Presión sanguínea</h5>
+		    </div>
+		  </div>
+		  <div class="card">
+		    <img src="img/funciones/11.jpg" style="height:75px;width: 75px;margin-top:0.3em;" class="card-img-top rounded mx-auto d-block" alt="...">
+		    <div class="card-body">
+		      <h5 class="card-title text-center">Oxígeno en sangre</h5>
+		    </div>
+		  </div>
+
+		    <div class="card ">
+		    <img src="img/funciones/12.jpg" style="height:75px;width: 75px;margin-top:0.3em;border: none;" class="card-img-top rounded mx-auto d-block" alt="...">
+		    <div class="card-body">
+		      <h5 class="card-title text-center">Modo Entrenamiento</h5>
+		    </div>
+		  </div>
+		</div>
+
+		<div class="card-group">
+		  <div class="card">
+		    <img src="img/funciones/13.jpg" style="height:75px;width: 75px;margin-top:0.3em;" class="card-img-top rounded mx-auto d-block" alt="...">
+		    <div class="card-body">
+		      <h5 class="card-title text-center">Recordatorio Sedentario</h5>
+		    </div>
+		  </div>
+		  <div class="card">
+		    <img src="img/funciones/14.jpg" style="height:75px;width: 75px;margin-top:0.3em;" class="card-img-top rounded mx-auto d-block" alt="...">
+		    <div class="card-body">
+		      <h5 class="card-title text-center">Notificaciones de llamadas</h5>
+		    </div>
+		  </div>
+		  <div class="card">
+		    <img src="img/funciones/15.jpg" style="height:75px;width: 75px;margin-top:0.3em;" class="card-img-top rounded mx-auto d-block" alt="...">
+		    <div class="card-body">
+		      <h5 class="card-title text-center">Notificaciones RRSS</h5>
+		    </div>
+		  </div>
+
+		    <div class="card">
+		    <img src="img/funciones/16.jpg" style="height:75px;width: 75px;margin-top:0.3em;" class="card-img-top rounded mx-auto d-block" alt="...">
+		    <div class="card-body">
+		      <h5 class="card-title text-center">Notificaciones Mensajes</h5>
+		    </div>
+		  </div>
+		</div>
+
+		<div class="card-group">
+		  <div class="card">
+		    <img src="img/funciones/17.jpg" style="height:75px;width: 75px;margin-top:0.3em;" class="card-img-top rounded mx-auto d-block" alt="...">
+		    <div class="card-body">
+		      <h5 class="card-title text-center">Notificaciones WhatsApp</h5>
+		    </div>
+		  </div>
+		  <div class="card">
+		    <img src="img/funciones/18.jpg" style="height:75px;width: 75px;margin-top:0.3em;" class="card-img-top rounded mx-auto d-block" alt="...">
+		    <div class="card-body">
+		      <h5 class="card-title text-center">Cronógrafo</h5>
+		    </div>
+		  </div>
+		  <div class="card">
+		    <img src="img/funciones/19.jpg" style="height:75px;width: 75px;margin-top:0.3em;" class="card-img-top rounded mx-auto d-block" alt="...">
+		    <div class="card-body">
+		      <h5 class="card-title text-center">Alarmas</h5>
+		    </div>
+		  </div>
+
+		    <div class="card">
+		    <img src="img/funciones/20.jpg" style="height:75px;width: 75px;margin-top:0.3em;" class="card-img-top rounded mx-auto d-block" alt="...">
+		    <div class="card-body">
+		      <h5 class="card-title text-center">Control remoto de música</h5>
+		    </div>
+		  </div>
+		</div>
+
+		<div class="card-group">
+		  <div class="card">
+		    <img src="img/funciones/21.jpg" style="height:75px;width: 75px;margin-top:0.3em;" class="card-img-top rounded mx-auto d-block" alt="...">
+		    <div class="card-body">
+		      <h5 class="card-title text-center">Elegir pantalla de inicio</h5>
+		    </div>
+		  </div>
+		  <div class="card">
+		    <img src="img/funciones/22.jpg" style="height:75px;width: 75px;margin-top:0.3em;" class="card-img-top rounded mx-auto d-block" alt="...">
+		    <div class="card-body">
+		      <h5 class="card-title text-center">Personalizar pantalla de inicio</h5>
+		    </div>
+		  </div>
+		  <div class="card">
+		    <img src="img/funciones/23.jpg" style="height:75px;width: 75px;margin-top:0.3em;" class="card-img-top rounded mx-auto d-block" alt="...">
+		    <div class="card-body">
+		      <h5 class="card-title text-center">Sensor de movimiento</h5>
+		    </div>
+		  </div>
+
+		    <div class="card">
+		    <img src="img/funciones/24.jpg" style="height:75px;width: 75px;margin-top:0.3em;" class="card-img-top rounded mx-auto d-block" alt="...">
+		    <div class="card-body">
+		      <h5 class="card-title text-center">Recordatorio de agua</h5>
+		    </div>
+		  </div>
+		</div>
+
+		 
+
+		<!-- Top navigation -->
+		<div class="topnav">
+
+		  <!-- Centered link -->
+		  <div class="topnav-centered">
+		    <img src="img/logo_white.png" style="width: 250px;height: 250px;">
+		  </div>
+		  
+		  <!-- Left-aligned links (default) -->
+
+		  
+		  <!-- Right-aligned links -->
+		  <div class="topnav-right">
+		    <a href="#search" class="elm"  >Inicio </a>
+		  </div>
+		</div>
+
+		<footer class="site-footer">
+		  <div class="container">
+		    <div class="row">
+		      <div class="col-lg-6">
+		        <div class="mb-5">
+		          <h3 class="footer-heading mb-4">FAQ</h3>
+		            <button type="button" class="collapsible">¿Puedo pagar a Contrareembolso?</button>
+		            <div class="content " >
+		              <p class="text-black">Por supuesto, nuestro método de pago es pago a la entrega, para garantizar la mayor confianza.</p>
+		            </div>
+		            <button type="button" class="collapsible">¿Cuánto vale el envío?</button>
+		            <div class="content " >
+		              <p class="text-black">Los gastos de envío están incluidos ya en el precio.</p>
+		            </div>
+		            <button type="button" class="collapsible">¿Cuánto tiempo tardará en llegar mi pedido?</button>
+		            <div class="content ">
+		              <p class="text-black">Con Respecto a los tiempo de envío que tenemos suelen ser de 1- 3 días laborables.No realizamos envíos los fines de semana ni días festivos.</p>
+		            </div>
+		            <button type="button" class="collapsible">¿Cómo puedo hacer un cambio o devolución?</button>
+		            <div class="content ">
+		              <p class="text-black">Para hacer un cambio o devolución consulta nuestra política de reembolso.</p>
+		            </div>
+		            <button type="button" class="collapsible">¿Puedo devolver mi pedido si no estoy satisfecho?</button>
+		            <div class="content ">
+		              <p class="text-black">Por supuesto. Puedes devolverlo los primeros 14 días tras recibirlo. ¡Sin compromiso!</p>
+		            </div>
+
+		        </div>
+
+		        
+		        
+		      </div>
+		      <div class="col-lg-4 mb-5 mb-lg-0">
+		        <h3 class="footer-heading mb-6">Navigations </h3>
+
+		            <div>
+								<ul class="list-unstyled">
+		              <li><a href="envios.html" target="_blank">-Envíos</a></li>
+		              <li><a href="politicasderembolso.html" target="_blank">-Política de reembolso</a></li>
+		              <li><a href="politicadeprivacidad.html" target="_blank">-Política de privacidad</a></li>
+		              <li><a href="PoliticadeCookies.html" target="_blank">-Política de Cookies</a></li>
+		              <li><a href="terminosycondiciones.html" target="_blank">-Términos y condiciones</a></li>
+		              <li><a href="AvisoLegal.html" target="_blank">-Aviso Legal</a></li>
+		              <li><img src="img/pagoseguro1.jpg" class="img-fluid rounded" style="width: 220px;height: 100px;"></li>                  
+		            </ul>
+		            </div>
+
+
+		      </div>
+
+		      
+		    </div>
+		    <div class="row pt-5 mt-5 text-center">
+		      <div class="col-md-12">
+		        <p>
+		        Copyright &copy;<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>document.write(new Date().getFullYear());</script> Derechos reservados  | crono <i class="icon-heart text-danger" aria-hidden="true"></i> 
+		        </p>
+		      </div>
+		      
+		    </div>
+		  </div>
+		</footer>
+						
+	</section>
+
+  <!-- jQuery -->
+  <script src="js/jquery.min.js"></script>
+  <!-- jQuery Easing -->
+  <script src="js/jquery.easing.1.3.js"></script>
+  <!-- Waypoints -->
+  <script src="js/jquery.waypoints.min.js"></script>
+  <!-- Stellar Parallax -->
+  <script src="js/jquery.stellar.min.js"></script>
+  <!-- Magnific Popup -->
+  <script src="js/jquery.magnific-popup.min.js"></script>
+
+
+  <script src="bootstrap4/js/popper.min.js"></script>
+  <script src="bootstrap4/js/bootstrap.min.js"></script>
+  <script src="alertifyjs/alertify.js"></script>
+
+
+  <!-- End demo purposes only -->
+
+  <!-- Main JS (Do not remove) -->
+  <script src="js/main.js"></script>
+
+</body>
+</html>
+
+<script>
+	var coll = document.getElementsByClassName("collapsible");
+	var i;
+
+	for (i = 0; i < coll.length; i++) {
+	  coll[i].addEventListener("click", function() {
+	    this.classList.toggle("active");
+	    var content = this.nextElementSibling;
+	    if (content.style.display === "block") {
+	      content.style.display = "none";
+	    } else {
+	      content.style.display = "block";
+	    }
+	  });
+	}
+
+	$(document).ready(function() {
+		treloj = parseInt(document.getElementById('totalDef').value, 10); 
+		rprod = parseInt(document.getElementById('totalProDef').value, 10);
+		gran_total = treloj - rprod;
+		document.getElementById('totalGralDef').value = gran_total;
+
+		//Enviar formulario
+	  $('#btnEnviarFormulario').click(function(){
+	    
+	    document.getElementById('btnEnviarFormulario').style.visibility = "hidden";
+
+	    /*vacios=validarFormVacio('formulario');
+
+	      if(vacios > 0){
+	        alertify.alert("FORMULARIO", "NO SE PUEDE ENVIAR UN CAMPO VACIO, DEBE COMPLETAR TODOS LOS DATOS DEL FORMULARIO!!");
+	        document.getElementById('btnEnviarFormulario').style.visibility = "visible";
+	        return false;
+
+	      }
+			*/
+	    datos=$('#formulario').serialize();
+	    $.ajax({
+	      type:"POST",
+	      data:datos,
+	      url:"enviarFormulario.php",
+	      success:function(r){
+	        //alert(r);
+	        if(r>=1){
+	        	document.getElementById('btnEnviarFormulario').style.visibility = "hidden";
+	          window.location.href = "gracias.html";
+	          modal.style.display = "none";
+	          
+	        }else{
+	          document.getElementById('btnEnviarFormulario').style.visibility = "visible";
+	          alertify.error("No se pudo enviar el correo");
+	        }
+	      }
+	    });
+	  });
+
+		//Botones para añadir o quitar audifonos 1 del formulario
+		$('#audi1-mas').click(function(){
+			document.getElementById("audi1-menos").style.display = "block";
+			document.getElementById("audi1-mas").style.display = "none";
+			document.getElementById('audi1Def').style.visibility = "visible";
+			document.getElementById('audi1Def').value = "AUDIFONO INALAMBRICO I9S TWS. 7,00";
+			totrel = parseInt(document.getElementById('totalDef').value, 10);
+			totpro = parseInt(document.getElementById('totalProDef').value, 10);
+			totpro = totpro + 7;
+			totgral = totrel + totpro;
+			//document.getElementById('totalProDef').value = totpro;
+			$('#totalProDef').val(totpro);
+			$('#totalGralDef').val(totgral);
+			document.getElementById('totRelProd').innerHTML= totgral+"&#8364;";
+		});
+		$('#audi1-menos').click(function(){
+			document.getElementById("audi1-menos").style.display = "none";
+			document.getElementById("audi1-mas").style.display = "block";
+			document.getElementById('audi1Def').style.visibility = "hidden";
+			document.getElementById('audi1Def').value = "";
+			totrel = parseInt(document.getElementById('totalDef').value, 10);
+			totpro = parseInt(document.getElementById('totalProDef').value, 10);
+			totpro = totpro - 7;
+			totgral = totrel + totpro;
+			//document.getElementById('totalProDef').value = totpro;
+			$('#totalProDef').val(totpro);
+			$('#totalGralDef').val(totgral);
+			document.getElementById('totRelProd').innerHTML= totgral+"&#8364;";
+		});
+
+		//Botones para añadir o quitar audifonos 2 del formulario
+		$('#audi2-mas').click(function(){
+			document.getElementById("audi2-menos").style.display = "block";
+			document.getElementById("audi2-mas").style.display = "none";
+			document.getElementById('audi2Def').style.visibility = "visible";
+			document.getElementById('audi2Def').value = "AUDIFONO INALAMBRICO. 15,00";
+			totrel = parseInt(document.getElementById('totalDef').value, 10);
+			totpro = parseInt(document.getElementById('totalProDef').value, 10);
+			totpro = totpro + 15;
+			totgral = totrel + totpro;
+			//document.getElementById('totalProDef').value = totpro;
+			$('#totalProDef').val(totpro);
+			$('#totalGralDef').val(totgral);
+			document.getElementById('totRelProd').innerHTML= totgral+"&#8364;";
+		});
+		$('#audi2-menos').click(function(){
+			document.getElementById("audi2-menos").style.display = "none";
+			document.getElementById("audi2-mas").style.display = "block";
+			document.getElementById('audi2Def').style.visibility = "hidden";
+			document.getElementById('audi2Def').value = "";
+			totrel = parseInt(document.getElementById('totalDef').value, 10);
+			totpro = parseInt(document.getElementById('totalProDef').value, 10);
+			totpro = totpro - 15;
+			totgral = totrel + totpro;
+			//document.getElementById('totalProDef').value = totpro;
+			$('#totalProDef').val(totpro);
+			$('#totalGralDef').val(totgral);
+			document.getElementById('totRelProd').innerHTML= totgral+"&#8364;";
+		});
+
+		//Botones para añadir o quitar cargadores del formulario
+		$('#carga-mas').click(function(){
+			document.getElementById("carga-menos").style.display = "block";
+			document.getElementById("carga-mas").style.display = "none";
+			document.getElementById('cargaDef').style.visibility = "visible";
+			document.getElementById('cargaDef').value = "CARGADOR SAMSUNG 15W. 5,00";
+			totrel = parseInt(document.getElementById('totalDef').value, 10);
+			totpro = parseInt(document.getElementById('totalProDef').value, 10);
+			totpro = totpro + 5;
+			totgral = totrel + totpro;
+			//document.getElementById('totalProDef').value = totpro;
+			$('#totalProDef').val(totpro);
+			$('#totalGralDef').val(totgral);
+			document.getElementById('totRelProd').innerHTML= totgral+"&#8364;";
+		});
+		$('#carga-menos').click(function(){
+			document.getElementById("carga-menos").style.display = "none";
+			document.getElementById("carga-mas").style.display = "block";
+			document.getElementById('cargaDef').style.visibility = "hidden";
+			document.getElementById('cargaDef').value = "";
+			totrel = parseInt(document.getElementById('totalDef').value, 10);
+			totpro = parseInt(document.getElementById('totalProDef').value, 10);
+			totpro = totpro - 5;
+			totgral = totrel + totpro;
+			//document.getElementById('totalProDef').value = totpro;
+			$('#totalProDef').val(totpro);
+			$('#totalGralDef').val(totgral);
+			document.getElementById('totRelProd').innerHTML= totgral+"&#8364;";
+		});
+
+		//Botones para añadir o quitar protectores de pantalla del formulario
+		$('#prot-mas').click(function(){
+			document.getElementById("prot-menos").style.display = "block";
+			document.getElementById("prot-mas").style.display = "none";
+			document.getElementById('protDef').style.visibility = "visible";
+			document.getElementById('protDef').value = "QOSEA-PROTECTOR DE PANTALLA 12.00";
+			totrel = parseInt(document.getElementById('totalDef').value, 10);
+			totpro = parseInt(document.getElementById('totalProDef').value, 10);
+			totpro = totpro + 12;
+			totgral = totrel + totpro;
+			//document.getElementById('totalProDef').value = totpro;
+			$('#totalProDef').val(totpro);
+			$('#totalGralDef').val(totgral);
+			document.getElementById('totRelProd').innerHTML= totgral+"&#8364;";
+		});
+		$('#prot-menos').click(function(){
+			document.getElementById("prot-menos").style.display = "none";
+			document.getElementById("prot-mas").style.display = "block";
+			document.getElementById('protDef').style.visibility = "hidden";
+			document.getElementById('protDef').value = "";
+			totrel = parseInt(document.getElementById('totalDef').value, 10);
+			totpro = parseInt(document.getElementById('totalProDef').value, 10);
+			totpro = totpro - 12;
+			totgral = totrel + totpro;
+			//document.getElementById('totalProDef').value = totpro;
+			$('#totalProDef').val(totpro);
+			$('#totalGralDef').val(totgral);
+			document.getElementById('totRelProd').innerHTML= totgral+"&#8364;";
+		});
+
+		$(function () {
+		  $('[data-toggle="tooltip"]').tooltip()
+		})
+	});
+
+  //Esto es para escondcer todo desde el principio
+  document.getElementById('totalDef').value = "0";
+  document.getElementById('totalProDef').value = "0";
+  document.getElementById('botonesCajas').style.visibility = "hidden";
+  document.getElementById('paso2').style.visibility = "hidden";
+  document.getElementById('paso3').style.visibility = "hidden";
+  document.getElementById('otros').style.visibility = "hidden";
+  document.getElementById('definitivo').style.visibility = "hidden";
+  document.getElementById('audi1Def').style.visibility = "hidden";
+	document.getElementById('audi2Def').style.visibility = "hidden";
+	document.getElementById('cargaDef').style.visibility = "hidden";
+	document.getElementById('protDef').style.visibility = "hidden";
+	document.getElementById('formulario').style.visibility = "hidden";
+	
+
+  document.getElementById('azul').style.display = "none";
+  document.getElementById('blanco').style.display = "none";
+  document.getElementById('negro').style.display = "none";
+  document.getElementById('rojo').style.display = "none";
+  document.getElementById('rosa').style.display = "none";
+  document.getElementById('carouselAzul').style.display = "none";
+  document.getElementById('carouselBlanco').style.display = "none";
+  document.getElementById('carouselNegro').style.display = "none";
+  document.getElementById('carouselRojo').style.display = "none";
+  document.getElementById('carouselRosa').style.display = "none";
+
+  //Cuando presione el botón Paso1 se hagan visible las cajas
+  function paso1() {
+    document.getElementById('botonesCajas').style.visibility = "visible";
+    document.getElementById("escoder").style.display = "block";
+  }
+
+  //Con esta función cuando presione una caja se muestra la foto de esas casa, activa el boton paso2 y lleno el formulario para la caja. También oculto todas las cajas que sean distintas a la que acabo de seleccionar
+  function cajas(caja) {
+
+    document.getElementById('cajaDef').value = caja;
+    document.getElementById('paso2').style.visibility = "visible";
+    document.getElementById('definitivo').style.visibility = "hidden";
+
+    if (caja=="azul") {
+      document.getElementById('azul').style.display = "block";
+      document.getElementById('blanco').style.display = "none";
+      document.getElementById('rosa').style.display = "none";
+      document.getElementById('negro').style.display = "none";
+      document.getElementById('rojo').style.display = "none";
+    } else if (caja=="blanco") {
+      document.getElementById('blanco').style.display = "block";
+      document.getElementById('azul').style.display = "none";
+      document.getElementById('rosa').style.display = "none";
+      document.getElementById('negro').style.display = "none";
+      document.getElementById('rojo').style.display = "none";
+    } else if (caja=="rosa") {
+      document.getElementById('rosa').style.display = "block";
+      document.getElementById('azul').style.display = "none";
+      document.getElementById('blanco').style.display = "none";
+      document.getElementById('negro').style.display = "none";
+      document.getElementById('rojo').style.display = "none";
+    } else if (caja=="negro") {
+      document.getElementById('negro').style.display = "block";
+      document.getElementById('azul').style.display = "none";
+      document.getElementById('blanco').style.display = "none";
+      document.getElementById('rosa').style.display = "none";
+      document.getElementById('rojo').style.display = "none";
+    } else if (caja=="rojo") {
+      document.getElementById('rojo').style.display = "block";
+      document.getElementById('azul').style.display = "none";
+      document.getElementById('blanco').style.display = "none";
+      document.getElementById('rosa').style.display = "none";
+      document.getElementById('negro').style.display = "none";
+    }
+  }
+
+  //Con esta funcion cuando se presione el Botón paso2 se muestran la seccion paso 
+	function paso2(){
+		var caja_correa = document.getElementById('cajaDef').value;
+    document.getElementById("escoder2").style.display = "block";
+    //document.getElementById('otros').style.visibility = "visible";  
+		if (caja_correa=="azul") {
+      document.getElementById('carouselAzul').style.display = "block";
+      document.getElementById('carouselBlanco').style.display = "none";
+      document.getElementById('carouselNegro').style.display = "none";
+      document.getElementById('carouselRojo').style.display = "none";
+      document.getElementById('carouselRosa').style.display = "none";
+    } else if (caja_correa=="blanco"){
+      document.getElementById('carouselAzul').style.display = "none";
+      document.getElementById('carouselBlanco').style.display = "block";
+      document.getElementById('carouselNegro').style.display = "none";
+      document.getElementById('carouselRojo').style.display = "none";
+      document.getElementById('carouselRosa').style.display = "none";
+    } else if (caja_correa=="negro"){
+      document.getElementById('carouselAzul').style.display = "none";
+      document.getElementById('carouselBlanco').style.display = "none";
+      document.getElementById('carouselNegro').style.display = "block";
+      document.getElementById('carouselRojo').style.display = "none";
+      document.getElementById('carouselRosa').style.display = "none";
+    } else if (caja_correa=="rojo"){
+      document.getElementById('carouselAzul').style.display = "none";
+      document.getElementById('carouselBlanco').style.display = "none";
+      document.getElementById('carouselRosa').style.display = "none";
+      document.getElementById('carouselNegro').style.display = "none";
+      document.getElementById('carouselRojo').style.display = "block";
+      document.getElementById('carouselRosa').style.display = "none";
+    } else if (caja_correa=="rosa"){
+      document.getElementById('carouselAzul').style.display = "none";
+      document.getElementById('carouselBlanco').style.display = "none";
+      document.getElementById('carouselRosa').style.display = "none";
+      document.getElementById('carouselNegro').style.display = "none";
+      document.getElementById('carouselRojo').style.display = "none";
+      document.getElementById('carouselRosa').style.display = "block";
+    }
+
+		/*$('html, body').animate({scrollTop:2180}, 'slow'); //seleccionamos etiquetas,clase o identificador destino, creamos animación hacia top de la página.
+		return false;*/
+	};
+
+  function correas(correa) {
+    document.getElementById('correaDef').value = correa;
+    document.getElementById('paso3').style.visibility = "visible";
+    document.getElementById('definitivo').style.visibility = "hidden";
+    //alert(correa);
+  }
+
+  //cuando se presioneel botón otros Carga datos de correas en el formulario, y activa la seccion de otros productos y el botón otros
+  function paso3() {
+  	document.getElementById("escoder3").style.display = "block";
+  	document.getElementById('escoder5').style.display = "block";
+    document.getElementById('definitivo').style.visibility = "visible";
+    //document.getElementById('btnEnviarFormulario').style.visibility = "visible";
+
+  	//document.getElementById("escoder4").style.display = "block";
+  	//document.getElementById('otros').style.visibility = "visible";
+  	var cajaFinal = document.getElementById('cajaDef').value;
+    var correaFinal = document.getElementById('correaDef').value;
+    
+     if (cajaFinal=="azul" && correaFinal=="01-blanco_metal") {
+      document.getElementById("nuevaFoto").src="img/correas/azul-01.png";
+      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/azul-01.png" width="200px" height="200px"/>';
+      document.getElementById('price').innerHTML= '70,00&#8364;';
+      document.getElementById('totalDef').value = 70;
+      
+      document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189484429479:1");  
+	    
+	    } else if (cajaFinal=="azul" && correaFinal=="02-negro_metal") {
+	      document.getElementById("nuevaFoto").src="img/correas/azul-02.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/azul-02.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    
+	      document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189484855465:1");
+
+	    } else if (cajaFinal=="azul" && correaFinal=="03-rojo") {
+	      document.getElementById("nuevaFoto").src="img/correas/azul-03.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/azul-03.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '65,00&#8364;';
+	      document.getElementById('totalDef').value = 65;
+	    
+	      document.getElementById("btnEnviar1").setAttribute("href", "https://remaveca.com");
+
+	    } else if (cajaFinal=="azul" && correaFinal=="04-blanco") {
+	      document.getElementById("nuevaFoto").src="img/correas/azul-04.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/azul-04.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '65,00&#8364;';
+	      document.getElementById('totalDef').value = 65;
+	    
+	      document.getElementById("btnEnviar1").setAttribute("href", "https://remaveca.com");
+
+	    } else if (cajaFinal=="azul" && correaFinal=="05-azul") {
+	      document.getElementById("nuevaFoto").src="img/correas/azul-05.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/azul-05.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '65,00&#8364;';
+	      document.getElementById('totalDef').value = 65;
+	    
+	      document.getElementById("btnEnviar1").setAttribute("href", "https://remaveca.com");
+
+	    } else if (cajaFinal=="azul" && correaFinal=="06-oro") {
+	      document.getElementById("nuevaFoto").src="img/correas/azul-06.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/azul-06.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    
+	      document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189485117607:1");
+
+	    } else if (cajaFinal=="azul" && correaFinal=="07-rosa") {
+	      document.getElementById("nuevaFoto").src="img/correas/azul-07.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/azul-07.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '65,00&#8364;';
+	      document.getElementById('totalDef').value = 65;
+	    
+	      document.getElementById("btnEnviar1").setAttribute("href", "https://remaveca.com");
+
+	    } else if (cajaFinal=="azul" && correaFinal=="08-negro") {
+	      document.getElementById("nuevaFoto").src="img/correas/azul-08.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/azul-08.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '65,00&#8364;';
+	      document.getElementById('totalDef').value = 65;
+	    
+	      document.getElementById("btnEnviar1").setAttribute("href", "https://remaveca.com");
+
+	    } else if (cajaFinal=="azul" && correaFinal=="09-rojo_Metal") {
+	      document.getElementById("nuevaFoto").src="img/correas/azul-09.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/azul-09.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    
+	      document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189484429479:1https://remaveca.com");
+
+	    } else if (cajaFinal=="azul" && correaFinal=="10-rosa_Metal") {
+	      document.getElementById("nuevaFoto").src="img/correas/azul-10.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/azul-10.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    
+	      document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189485215911:1://remaveca.com");
+
+	    } else if (cajaFinal=="azul" && correaFinal=="11-azul_Claro") {
+	      document.getElementById("nuevaFoto").src="img/correas/azul-11.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/azul-11.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '65,00&#8364;';
+	      document.getElementById('totalDef').value = 65;
+	    
+	      document.getElementById("btnEnviar1").setAttribute("href", "https://remaveca.com");
+
+	    } else if (cajaFinal=="azul" && correaFinal=="12-arcoiris_hilo") {
+	      document.getElementById("nuevaFoto").src="img/correas/azul-12.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/azul-12.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    
+	      document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189487935655:1");
+
+	    } else if (cajaFinal=="azul" && correaFinal=="13-azul_hilo") {
+	      document.getElementById("nuevaFoto").src="img/correas/azul-13.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/azul-13.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    
+	      document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189488296103:1");
+
+	    } else if (cajaFinal=="azul" && correaFinal=="14-negro_hilo") {
+	      document.getElementById("nuevaFoto").src="img/correas/azul-14.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/azul-14.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    
+	      document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189488296103:1");
+
+	    } else if (cajaFinal=="azul" && correaFinal=="15-rojo_hilo") {
+	      document.getElementById("nuevaFoto").src="img/correas/azul-15.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/azul-15.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;'; 
+	      document.getElementById('totalDef').value = 70;
+	    
+	      document.getElementById("btnEnviar1").setAttribute("href", "https://remaveca.com");
+
+	    } else if (cajaFinal=="azul" && correaFinal=="16-azul_troquelada") {
+	      document.getElementById("nuevaFoto").src="img/correas/azul-16.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/azul-16.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    
+	      document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189489115303:1");
+
+	    } else if (cajaFinal=="azul" && correaFinal=="17-blanco_troquelada") {
+	      document.getElementById("nuevaFoto").src="img/correas/azul-17.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/azul-17.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    
+	      document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189489410215:1");
+
+	    } else if (cajaFinal=="azul" && correaFinal=="18-negro_troquelada") {
+	      document.getElementById("nuevaFoto").src="img/correas/azul-18.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/azul-18.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    
+	      document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189489868967:1");
+
+	    } else if (cajaFinal=="azul" && correaFinal=="19-rojo_troquelada") {
+	      document.getElementById("nuevaFoto").src="img/correas/azul-19.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/azul-19.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;'; 
+	      document.getElementById('totalDef').value = 70;
+
+	      document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189490098343:1");
+    }
+
+
+    if (cajaFinal=="blanco" && correaFinal=="01-blanco_metal") {
+      document.getElementById("nuevaFoto").src="img/correas/blanco-01.png";
+      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/blanco-01.png" width="200px" height="200px"/>';
+      document.getElementById('price').innerHTML= '70,00&#8364;';
+      document.getElementById('totalDef').value = 70;
+
+      document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189490360487:1");
+
+	    } else if (cajaFinal=="blanco" && correaFinal=="02-negro_metal") {
+	      document.getElementById("nuevaFoto").src="img/correas/blanco-02.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/blanco-02.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189490786471:1");
+
+	    } else if (cajaFinal=="blanco" && correaFinal=="03-rojo") {
+	      document.getElementById("nuevaFoto").src="img/correas/blanco-03.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/blanco-03.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '65,00&#8364;';
+	      document.getElementById('totalDef').value = 65;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189491441831:1");
+
+	    } else if (cajaFinal=="blanco" && correaFinal=="04-blanco") {
+	      document.getElementById("nuevaFoto").src="img/correas/blanco-04.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/blanco-04.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '65,00&#8364;';
+	      document.getElementById('totalDef').value = 65;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189492654247:1");
+
+	    } else if (cajaFinal=="blanco" && correaFinal=="05-azul") {
+	      document.getElementById("nuevaFoto").src="img/correas/blanco-05.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/blanco-05.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '65,00&#8364;';
+	      document.getElementById('totalDef').value = 65;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189493473447:1");
+
+	    } else if (cajaFinal=="blanco" && correaFinal=="06-oro") {
+	      document.getElementById("nuevaFoto").src="img/correas/blanco-06.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/blanco-06.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189491081383:1");
+
+	    } else if (cajaFinal=="blanco" && correaFinal=="07-rosa") {
+	      document.getElementById("nuevaFoto").src="img/correas/blanco-07.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/blanco-07.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '65,00&#8364;';
+	      document.getElementById('totalDef').value = 65;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189493964967:1");
+
+	    } else if (cajaFinal=="blanco" && correaFinal=="08-negro") {
+	      document.getElementById("nuevaFoto").src="img/correas/blanco-08.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/blanco-08.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '65,00&#8364;';
+	      document.getElementById('totalDef').value = 65;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189493014695:1");
+
+	    } else if (cajaFinal=="blanco" && correaFinal=="09-rojo_Metal") {
+	      document.getElementById("nuevaFoto").src="img/correas/blanco-09.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/blanco-09.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189492031655:1");
+
+	    } else if (cajaFinal=="blanco" && correaFinal=="10-rosa_Metal") {
+	      document.getElementById("nuevaFoto").src="img/correas/blanco-10.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/blanco-10.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189491441831:1");
+
+	    } else if (cajaFinal=="blanco" && correaFinal=="11-azul_Claro") {
+	      document.getElementById("nuevaFoto").src="img/correas/blanco-11.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/blanco-11.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '65,00&#8364;';
+	      document.getElementById('totalDef').value = 65;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189494358183:1");
+
+	    } else if (cajaFinal=="blanco" && correaFinal=="12-arcoiris_hilo") {
+	      document.getElementById("nuevaFoto").src="img/correas/blanco-12.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/blanco-12.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189494751399:1");
+
+	    } else if (cajaFinal=="blanco" && correaFinal=="13-azul_hilo") {
+	      document.getElementById("nuevaFoto").src="img/correas/blanco-13.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/blanco-13.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189495079079:1");
+
+	    } else if (cajaFinal=="blanco" && correaFinal=="14-negro_hilo") {
+	      document.getElementById("nuevaFoto").src="img/correas/blanco-14.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/blanco-14.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189490786471:1");
+
+	    } else if (cajaFinal=="blanco" && correaFinal=="15-rojo_hilo") {
+	      document.getElementById("nuevaFoto").src="img/correas/blanco-15.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/blanco-15.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;'; 
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189495931047:1");
+
+	    } else if (cajaFinal=="blanco" && correaFinal=="16-azul_troquelada") {
+	      document.getElementById("nuevaFoto").src="img/correas/blanco-16.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/blanco-16.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189496422567:1");
+
+	    } else if (cajaFinal=="blanco" && correaFinal=="17-blanco_troquelada") {
+	      document.getElementById("nuevaFoto").src="img/correas/blanco-17.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/blanco-17.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189496750247:1");
+
+	    } else if (cajaFinal=="blanco" && correaFinal=="18-negro_troquelada") {
+	      document.getElementById("nuevaFoto").src="img/correas/blanco-18.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/blanco-18.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189497176231:1");
+
+	    } else if (cajaFinal=="blanco" && correaFinal=="19-rojo_troquelada") {
+	      document.getElementById("nuevaFoto").src="img/correas/blanco-19.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/blanco-19.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;'; 
+	      document.getElementById('totalDef').value = 70;
+
+	      document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189497733287:1");
+    }
+
+    if (cajaFinal=="negro" && correaFinal=="01-blanco_metal") {
+      document.getElementById("nuevaFoto").src="img/correas/negro-01.png";
+      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/negro-01.png" width="200px" height="200px"/>';
+      document.getElementById('price').innerHTML= '70,00&#8364;';
+      document.getElementById('totalDef').value = 70;
+
+      document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189498159271:1");
+
+	    } else if (cajaFinal=="negro" && correaFinal=="02-negro_metal") {
+	      document.getElementById("nuevaFoto").src="img/correas/negro-02.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correa/negro-02.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189498519719:1");
+
+	    } else if (cajaFinal=="negro" && correaFinal=="03-rojo") {
+	      document.getElementById("nuevaFoto").src="img/correas/negro-03.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/negro-03.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '65,00&#8364;';
+	      document.getElementById('totalDef').value = 65;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189501829287:1");
+
+	    } else if (cajaFinal=="negro" && correaFinal=="04-blanco") {
+	      document.getElementById("nuevaFoto").src="img/correas/negro-04.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/negro-04.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '65,00&#8364;';
+	      document.getElementById('totalDef').value = 65;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189500747943:1");
+
+	    } else if (cajaFinal=="negro" && correaFinal=="05-azul") {
+	      document.getElementById("nuevaFoto").src="img/correa/negro-05.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correa/negro-05.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '65,00&#8364;';
+	      document.getElementById('totalDef').value = 65;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189501501607:1");
+
+	    } else if (cajaFinal=="negro" && correaFinal=="06-oro") {
+	      document.getElementById("nuevaFoto").src="img/correas/negro-06.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/negro-06.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189499044007:1");
+
+	    } else if (cajaFinal=="negro" && correaFinal=="07-rosa") {
+	      document.getElementById("nuevaFoto").src="img/correas/negro-07.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/negro-07.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 65;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189501829287:1");
+
+	    } else if (cajaFinal=="negro" && correaFinal=="08-negro") {
+	      document.getElementById("nuevaFoto").src="img/correas/negro-08.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/negro-08.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '65,00&#8364;';
+	      document.getElementById('totalDef').value = 65;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189501173927:1");
+
+	    } else if (cajaFinal=="negro" && correaFinal=="09-rojo_Metal") {
+	      document.getElementById("nuevaFoto").src="img/correas/negro-09.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/negro-09.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189500190887:1");
+
+	    } else if (cajaFinal=="negro" && correaFinal=="10-rosa_Metal") {
+	      document.getElementById("nuevaFoto").src="img/correas/negro-10.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/negro-10.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189499338919:1");
+
+	    } else if (cajaFinal=="negro" && correaFinal=="11-azul_Claro") {
+	      document.getElementById("nuevaFoto").src="img/correas/negro-11.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/negro-11.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '65,00&#8364;';
+	      document.getElementById('totalDef').value = 65;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189502156967:1");
+
+	    } else if (cajaFinal=="negro" && correaFinal=="12-arcoiris_hilo") {
+	      document.getElementById("nuevaFoto").src="img/correas/negro-12.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/negro-12.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189502353575:1");
+
+	    } else if (cajaFinal=="negro" && correaFinal=="13-azul_hilo") {
+	      document.getElementById("nuevaFoto").src="img/correas/negro-13.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/negro-13.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189502517415:1");
+
+	    } else if (cajaFinal=="negro" && correaFinal=="14-negro_hilo") {
+	      document.getElementById("nuevaFoto").src="img/correas/negro-14.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/negro-14.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189502648487:1");
+
+	    } else if (cajaFinal=="negro" && correaFinal=="15-rojo_hilo") {
+	      document.getElementById("nuevaFoto").src="img/correas/negro-15.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/negro-15.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;'; 
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189503008935:1");
+
+	    } else if (cajaFinal=="negro" && correaFinal=="16-azul_troquelada") {
+	      document.getElementById("nuevaFoto").src="img/correas/negro-16.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/negro-16.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189503172775:1");
+
+	    } else if (cajaFinal=="negro" && correaFinal=="17-blanco_troquelada") {
+	      document.getElementById("nuevaFoto").src="img/correas/negro-17.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/negro-17.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189503369383:1");
+
+	    } else if (cajaFinal=="negro" && correaFinal=="18-negro_troquelada") {
+	      document.getElementById("nuevaFoto").src="img/correas/negro-18.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/negro-18.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189503860903:1");
+
+	    } else if (cajaFinal=="negro" && correaFinal=="19-rojo_troquelada") {
+	      document.getElementById("nuevaFoto").src="img/correas/negro-19.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/negro-19.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;'; 
+	      document.getElementById('totalDef').value = 70;
+
+	      document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189504188583:1");
+    }
+
+    if (cajaFinal=="rojo" && correaFinal=="01-blanco_metal") {
+      document.getElementById("nuevaFoto").src="img/correas/rojo-01.png";
+      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/rojo-01.png" width="200px" height="200px"/>';
+      document.getElementById('price').innerHTML= '70,00&#8364;';
+      document.getElementById('totalDef').value = 70;
+
+      document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189504483495:1");
+
+	    } else if (cajaFinal=="rojo" && correaFinal=="02-negro_metal") {
+	      document.getElementById("nuevaFoto").src="img/correas/rojo-02.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correa/rojo-02.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189504811175:1");
+
+	    } else if (cajaFinal=="rojo" && correaFinal=="03-rojo") {
+	      document.getElementById("nuevaFoto").src="img/correas/rojo-03.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/rojo-03.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '65,00&#8364;';
+	      document.getElementById('totalDef').value = 65;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189506449575:1");
+
+	    } else if (cajaFinal=="rojo" && correaFinal=="04-blanco") {
+	      document.getElementById("nuevaFoto").src="img/correas/rojo-04.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/rojo-04.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '65,00&#8364;';
+	      document.getElementById('totalDef').value = 65;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189506646183:1");
+
+	    } else if (cajaFinal=="rojo" && correaFinal=="05-azul") {
+	      document.getElementById("nuevaFoto").src="img/correa/rojo-05.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correa/rojo-05.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '65,00&#8364;';
+	      document.getElementById('totalDef').value = 65;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189507399847:1");
+
+	    } else if (cajaFinal=="rojo" && correaFinal=="06-oro") {
+	      document.getElementById("nuevaFoto").src="img/correas/rojo-06.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/rojo-06.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189505302695:1");
+
+	    } else if (cajaFinal=="rojo" && correaFinal=="07-rosa") {
+	      document.getElementById("nuevaFoto").src="img/correas/rojo-07.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/rojo-07.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '65,00&#8364;';
+	      document.getElementById('totalDef').value = 65;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189507891367:1");
+
+	    } else if (cajaFinal=="rojo" && correaFinal=="08-negro") {
+	      document.getElementById("nuevaFoto").src="img/correas/rojo-08.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/rojo-08.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '65,00&#8364;';
+	      document.getElementById('totalDef').value = 65;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189506973863:1");
+
+	    } else if (cajaFinal=="rojo" && correaFinal=="09-rojo_Metal") {
+	      document.getElementById("nuevaFoto").src="img/correas/rojo-09.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/rojo-09.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189506056359:1");
+
+	    } else if (cajaFinal=="rojo" && correaFinal=="10-rosa_Metal") {
+	      document.getElementById("nuevaFoto").src="img/correas/rojo-10.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/rojo-10.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189505630375:1");
+
+	    } else if (cajaFinal=="rojo" && correaFinal=="11-azul_Claro") {
+	      document.getElementById("nuevaFoto").src="img/correas/rojo-11.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/rojo-11.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '65,00&#8364;';
+	      document.getElementById('totalDef').value = 65;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189508153511:1");
+
+	    } else if (cajaFinal=="rojo" && correaFinal=="12-arcoiris_hilo") {
+	      document.getElementById("nuevaFoto").src="img/correas/rojo-12.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/rojo-12.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189508546727:1");
+
+	    } else if (cajaFinal=="rojo" && correaFinal=="13-azul_hilo") {
+	      document.getElementById("nuevaFoto").src="img/correas/rojo-13.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/rojo-13.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189509136551:1");
+
+	    } else if (cajaFinal=="rojo" && correaFinal=="14-negro_hilo") {
+	      document.getElementById("nuevaFoto").src="img/correas/rojo-14.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/rojo-14.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189509398695:1");
+
+	    } else if (cajaFinal=="rojo" && correaFinal=="15-rojo_hilo") {
+	      document.getElementById("nuevaFoto").src="img/correas/rojo-15.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/rojo-15.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;'; 
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189509857447:1");
+
+	    } else if (cajaFinal=="rojo" && correaFinal=="16-azul_troquelada") {
+	      document.getElementById("nuevaFoto").src="img/correas/rojo-16.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/rojo-16.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189510283431:1");
+
+	    } else if (cajaFinal=="rojo" && correaFinal=="17-blanco_troquelada") {
+	      document.getElementById("nuevaFoto").src="img/correas/rojo-17.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/rojo-17.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189510578343:1");
+
+	    } else if (cajaFinal=="rojo" && correaFinal=="18-negro_troquelada") {
+	      document.getElementById("nuevaFoto").src="img/correas/rojo-18.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/rojo-18.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189511102631:1");
+
+	    } else if (cajaFinal=="rojo" && correaFinal=="19-rojo_troquelada") {
+	      document.getElementById("nuevaFoto").src="img/correas/rojo-19.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/rojo-19.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;'; 
+	      document.getElementById('totalDef').value = 70;
+
+	      document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189511430311:1");
+    }
+
+   	if (cajaFinal=="rosa" && correaFinal=="01-blanco_metal") {
+      document.getElementById("nuevaFoto").src="img/correas/rosa-01.png";
+      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/rosa-01.png" width="200px" height="200px"/>';
+      document.getElementById('price').innerHTML= '70,00&#8364;';
+      document.getElementById('totalDef').value = 70;
+
+      document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189512282279:1");
+
+	    } else if (cajaFinal=="rosa" && correaFinal=="02-negro_metal") {
+	      document.getElementById("nuevaFoto").src="img/correas/rosa-02.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correa/rosa-02.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189512708263:1");
+
+	    } else if (cajaFinal=="rosa" && correaFinal=="03-rojo") {
+	      document.getElementById("nuevaFoto").src="img/correas/rosa-03.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/rosa-03.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '65,00&#8364;';
+	      document.getElementById('totalDef').value = 65;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189516542119:1");
+
+	    } else if (cajaFinal=="rosa" && correaFinal=="04-blanco") {
+	      document.getElementById("nuevaFoto").src="img/correas/rosa-04.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/rosa-04.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '65,00&#8364;';
+	      document.getElementById('totalDef').value = 65;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189515296935:1");
+
+	    } else if (cajaFinal=="rosa" && correaFinal=="05-azul") {
+	      document.getElementById("nuevaFoto").src="img/correa/rosa-05.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correa/rosa-05.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '65,00&#8364;';
+	      document.getElementById('totalDef').value = 65;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189515985063:1");
+
+	    } else if (cajaFinal=="rosa" && correaFinal=="06-oro") {
+	      document.getElementById("nuevaFoto").src="img/correas/rosa-06.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/rosa-06.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189513167015:1");
+
+	    } else if (cajaFinal=="rosa" && correaFinal=="07-rosa") {
+	      document.getElementById("nuevaFoto").src="img/correas/rosa-07.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/rosa-07.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '65,00&#8364;';
+	      document.getElementById('totalDef').value = 65;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189514870951:1");
+
+	    } else if (cajaFinal=="rosa" && correaFinal=="08-negro") {
+	      document.getElementById("nuevaFoto").src="img/correas/rosa-08.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/rosa-08.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '65,00&#8364;';
+	      document.getElementById('totalDef').value = 65;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189515591847:1");
+
+	    } else if (cajaFinal=="rosa" && correaFinal=="09-rojo_Metal") {
+	      document.getElementById("nuevaFoto").src="img/correas/rosa-09.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/rosa-09.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189514248359:1");
+
+	    } else if (cajaFinal=="rosa" && correaFinal=="10-rosa_Metal") {
+	      document.getElementById("nuevaFoto").src="img/correas/rosa-10.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/rosa-10.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189513560231:1");
+
+	    } else if (cajaFinal=="rosa" && correaFinal=="11-azul_Claro") {
+	      document.getElementById("nuevaFoto").src="img/correas/rosa-11.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/rosa-11.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '65,00&#8364;';
+	      document.getElementById('totalDef').value = 65;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189516902567:1");
+
+	    } else if (cajaFinal=="rosa" && correaFinal=="12-arcoiris_hilo") {
+	      document.getElementById("nuevaFoto").src="img/correas/rosa-12.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/rosa-12.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189517394087:1");
+
+	    } else if (cajaFinal=="rosa" && correaFinal=="13-azul_hilo") {
+	      document.getElementById("nuevaFoto").src="img/correas/rosa-13.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/rosa-13.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189517754535:1");
+
+	    } else if (cajaFinal=="rosa" && correaFinal=="14-negro_hilo") {
+	      document.getElementById("nuevaFoto").src="img/correas/rosa-14.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/rosa-14.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189518016679:1");
+
+	    } else if (cajaFinal=="rosa" && correaFinal=="15-rojo_hilo") {
+	      document.getElementById("nuevaFoto").src="img/correas/rosa-15.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/rosa-15.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;'; 
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189518311591:1");
+
+	    } else if (cajaFinal=="rosa" && correaFinal=="16-azul_troquelada") {
+	      document.getElementById("nuevaFoto").src="img/correas/rosa-16.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/rosa-16.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189518672039:1");
+
+	    } else if (cajaFinal=="rosa" && correaFinal=="17-blanco_troquelada") {
+	      document.getElementById("nuevaFoto").src="img/correas/rosa-17.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/rosa-17.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189518901415:1");
+
+	    } else if (cajaFinal=="rosa" && correaFinal=="18-negro_troquelada") {
+	      document.getElementById("nuevaFoto").src="img/correas/rosa-18.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/rosa-18.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;';
+	      document.getElementById('totalDef').value = 70;
+	    	
+	    	document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189520703655:1");
+
+	    } else if (cajaFinal=="rosa" && correaFinal=="19-rojo_troquelada") {
+	      document.getElementById("nuevaFoto").src="img/correas/rosa-19.png";
+	      document.getElementById('fotoDef').value = '<img src="http://prueba.crono.site/img/correas/rosa-19.png" width="200px" height="200px"/>';
+	      document.getElementById('price').innerHTML= '70,00&#8364;'; 
+	      document.getElementById('totalDef').value = 70;
+
+	      document.getElementById("btnEnviar1").setAttribute("href", "https://reembolser.myshopify.com/a/op/pl/h1547koco34l2qkz1loko59og24br8mc/?shp-pd=reembolser&shp-fid=9887&shp-ps=41189521096871:1");
+    }
+
+    treloj = parseInt(document.getElementById('totalDef').value, 10); 
+		rprod = parseInt(document.getElementById('totalProDef').value, 10);
+		gran_total = treloj + rprod;
+		document.getElementById('totalGralDef').value = gran_total;
+		document.getElementById('totRelProd').innerHTML= gran_total+"&#8364;";
+  }
+
+  /*//Cuando presione el botón Paso3 
+  function paso3() {
+  	document.getElementById("escoder3").style.display = "block";
+  	document.getElementById('escoder5').style.display = "block";
+    document.getElementById('definitivo').style.visibility = "visible";
+    document.getElementById('btnEnviarFormulario').style.visibility = "visible";
+  }*/
+
+  //funcion para validar datos vacios :)
+  function validarFormVacio(formulario){
+    datos=$('#' + formulario).serialize();
+    d=datos.split('&');
+    vacios=0;
+    for(i=0;i< d.length;i++){
+      controles=d[i].split("=");
+      if(controles[1]=="A" || controles[1]==""){
+        vacios++;
+      }
+    }
+    return vacios;
+  }
+
+
+
+</script>
+
+<h1>Prueba de contenido</h1>

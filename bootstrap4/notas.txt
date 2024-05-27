@@ -1,0 +1,15 @@
+Desde la página de Bootstrap dice que para la versión 4.1 se necesita:
+
+jquery-3.3.1.min.js
+popper.min la versión 1.14.3
+
+sin embargo al probar con "popper 1.14.3" muestra un error en la consola de error en la fuente 404, aunque aparentemente trabaja.
+Luego descargué la versión 1.14.5 y estátrabajando sin el error.
+
+por lo que debe quedar:
+
+- jquery-3.3.1.min.js
+- popper.min la versión 1.14.3 y este último antes de bootstrap.min.js
+- bootstrap.min.js
+
+el archivo de popper.min.js que se utiliza está en popper.js-1.14.3\dist\umd
